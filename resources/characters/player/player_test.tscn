@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://dtj1bdfd0v02k"]
 
 [ext_resource type="Script" uid="uid://b16t10obdq21x" path="res://scripts/characters/player/player_script.gd" id="1_1agwk"]
-[ext_resource type="Texture2D" uid="uid://xehg4sf4ywki" path="res://icon.svg" id="2_ntp4c"]
+[ext_resource type="Texture2D" uid="uid://bfw8oenxwpik1" path="res://assets/character/player/player_alpha/dummyPlayer.png" id="2_1agwk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ntp4c")
+"texture": ExtResource("2_1agwk")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
-size = Vector2(118, 118)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so318"]
+radius = 26.0
+height = 106.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=233385622]
 script = ExtResource("1_1agwk")
@@ -24,4 +25,5 @@ script = ExtResource("1_1agwk")
 sprite_frames = SubResource("SpriteFrames_kvkvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960927308]
-shape = SubResource("RectangleShape2D_1nl21")
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_so318")

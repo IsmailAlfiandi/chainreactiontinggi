@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cw23r7xv61wbu"]
+
+[ext_resource type="Texture2D" uid="uid://b5jqy1365g804" path="res://assets/character/enemy/slime/1000414533.png" id="1_ryy02"]
+[ext_resource type="Texture2D" uid="uid://blp6nv6cemnst" path="res://assets/character/enemy/slime/1000414545.png" id="2_o8he5"]
+[ext_resource type="Texture2D" uid="uid://d2exngyuo2hrw" path="res://assets/character/enemy/slime/1000414546.png" id="3_keg0v"]
+[ext_resource type="Texture2D" uid="uid://drsa40pdc1t7" path="res://assets/character/enemy/slime/1000414547.png" id="4_p7o3g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ryy02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o8he5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_keg0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p7o3g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nl21"]
+radius = 57.0
+height = 260.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1653129241]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1337200819]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+frame_progress = 0.7863914
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=72829834]
+position = Vector2(-14, 55)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1nl21")
