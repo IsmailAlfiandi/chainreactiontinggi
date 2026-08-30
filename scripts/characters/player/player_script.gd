@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#HIDUP JOKOWI
 # === Movement ===
 @export var speed: float = 220.0
 @export var acceleration: float = 1800.0
