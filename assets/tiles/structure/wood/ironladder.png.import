@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsefl1bojneef"
-path="res://.godot/imported/ARROW.png-d396ad77a1052464cbdfdc65f0fe0ac4.ctex"
+uid="uid://vl16qkq2pvqh"
+path="res://.godot/imported/ironladder.png-b610f76ecfd7590fdb82d9fd65b7b4da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapons/ARROW.png"
-dest_files=["res://.godot/imported/ARROW.png-d396ad77a1052464cbdfdc65f0fe0ac4.ctex"]
+source_file="res://assets/tiles/structure/wood/ironladder.png"
+dest_files=["res://.godot/imported/ironladder.png-b610f76ecfd7590fdb82d9fd65b7b4da.ctex"]
 
 [params]
 

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="4_8dq38"]
 [ext_resource type="Texture2D" uid="uid://xregofdtiq51" path="res://assets/weapons/Spear.png" id="5_qfy82"]
 [ext_resource type="Texture2D" uid="uid://clrubibcmxir7" path="res://assets/weapons/p50.png" id="6_b1mp5"]
+[ext_resource type="Texture2D" uid="uid://bsefl1bojneef" path="res://assets/weapons/ARROW.png" id="7_b1mp5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -53,3 +54,7 @@ texture = ExtResource("5_qfy82")
 [node name="P50" type="Sprite2D" parent="." unique_id=1111512733]
 position = Vector2(-62, 161)
 texture = ExtResource("6_b1mp5")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1312469682]
+position = Vector2(-135, 106)
+texture = ExtResource("7_b1mp5")
