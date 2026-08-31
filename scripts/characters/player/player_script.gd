@@ -43,14 +43,29 @@ func _physics_process(delta: float):
 
 func handle_movement(delta: float):
 	var direction = Input.get_axis("move_left", "move_right")
+
 	if direction != 0 and can_move:
-		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
+		velocity.x = move_toward(
+			velocity.x,
+			direction * speed,
+			acceleration * delta
+		)
+
 		is_facing_right = direction > 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		velocity.x = move_toward(
+			velocity.x,
+			0,
+			friction * delta
+		)
 
 	animated_sprite.flip_h = not is_facing_right
-	bow_pivot.scale.x = 1 if is_facing_right else -1
+
+	# Pindahkan bow ke sisi karakter
+	if is_facing_right:
+		bow_pivot.position.x = abs(bow_pivot.position.x)
+	else:
+		bow_pivot.position.x = -abs(bow_pivot.position.x)
 
 func handle_aim_input():
 	if Input.is_action_just_pressed("shoot"):  # bind this to mouse left or space
@@ -62,18 +77,22 @@ func enter_aiming():
 
 func handle_aiming(delta: float):
 	can_move = false
+
 	var mouse_pos = get_global_mouse_position()
 	aim_direction = (mouse_pos - bow_pivot.global_position).normalized()
-	
+
+	# Arah bow mengikuti mouse
 	bow_pivot.rotation = aim_direction.angle()
-	
+
 	var distance = bow_pivot.global_position.distance_to(mouse_pos)
-	current_power = clamp(distance * power_multiplier, min_power, max_power)
-	
-	# Release to shoot
-	if Input.is_action_just_pressed("shoot"):
+	current_power = clamp(
+		distance * power_multiplier,
+		min_power,
+		max_power
+	)
+
+	if Input.is_action_just_released("shoot"):
 		shoot()
-		can_move = false
 		state = State.MOVE
 
 func shoot():
@@ -88,13 +107,17 @@ func shoot():
 	
 	# Optional: small torque for realism
 	arrow.apply_torque_impulse(randf_range(-30, 30))
-	
+
 	var camera = get_tree().get_first_node_in_group("camera")
 	if camera:
 		camera.follow(arrow)
 
+		# Setelah arrow dihapus, kamera kembali ke player
+		arrow.tree_exited.connect(func():
+			camera.follow(self)
+		)
+
 	current_power = 0.0
-	bow_pivot.rotation = 0.0
 	can_move = true
 	
 func update_animation():
