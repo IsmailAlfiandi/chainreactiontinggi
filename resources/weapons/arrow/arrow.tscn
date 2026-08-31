@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bituucw82707a"]
+
+[ext_resource type="Script" uid="uid://dlpj65vuexpno" path="res://resources/weapons/arrow/arrow_script.gd" id="1_6aam2"]
+[ext_resource type="Texture2D" uid="uid://bsefl1bojneef" path="res://assets/weapons/Arrow.png" id="1_e0ecy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkvn"]
+a = Vector2(-7, 0)
+b = Vector2(20, 23)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353]
+script = ExtResource("1_6aam2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128149147]
+position = Vector2(72.5, 49.499996)
+scale = Vector2(2.1328125, 1.7734374)
+texture = ExtResource("1_e0ecy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176653609]
+position = Vector2(13, 25)
+shape = SubResource("SegmentShape2D_kvkvn")
