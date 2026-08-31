@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2exvg8d2dp68"
-path="res://.godot/imported/steelfoundationnatural-export.png-f3c9bd64f5c4e602a63f0db02d7dacd1.ctex"
+uid="uid://clgy2mjn0kt51"
+path="res://.godot/imported/woodblockcritical.png-1f512832846d255edad433090d5358a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/structure/wood/steelfoundationnatural-export.png"
-dest_files=["res://.godot/imported/steelfoundationnatural-export.png-f3c9bd64f5c4e602a63f0db02d7dacd1.ctex"]
+source_file="res://assets/tiles/structure/wood/woodblockcritical.png"
+dest_files=["res://.godot/imported/woodblockcritical.png-1f512832846d255edad433090d5358a2.ctex"]
 
 [params]
 

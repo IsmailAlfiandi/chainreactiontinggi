@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt3idl7x85a70"
-path="res://.godot/imported/stonefoundationnatural.png-6c051ee753d365a3e52747368d1b0060.ctex"
+uid="uid://t4bp8vbk7sqy"
+path="res://.godot/imported/1000415777.png-048ca351561c64639be4592c298770de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/structure/wood/stonefoundationnatural.png"
-dest_files=["res://.godot/imported/stonefoundationnatural.png-6c051ee753d365a3e52747368d1b0060.ctex"]
+source_file="res://assets/tiles/expslosive/tnt/1000415777.png"
+dest_files=["res://.godot/imported/1000415777.png-048ca351561c64639be4592c298770de.ctex"]
 
 [params]
 

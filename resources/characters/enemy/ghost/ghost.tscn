@@ -37,6 +37,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wj14"]
+radius = 112.0
+height = 328.0
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1115608176]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1170677153]
@@ -45,3 +49,5 @@ animation = &"idle"
 frame_progress = 0.10885244
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=876084171]
+position = Vector2(-16, -13)
+shape = SubResource("CapsuleShape2D_6wj14")

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://clfft6n70voan"]
+
+[ext_resource type="Texture2D" uid="uid://be1877cg70nb1" path="res://assets/tiles/structure/steel/steelblocknatural.png" id="1_vmukd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vmukd")
+}],
+"loop": 1,
+"name": &"fullHealth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(98, 98)
+
+[node name="steelBlock" type="RigidBody2D" unique_id=1160310445]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653458812]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"fullHealth"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180516912]
+shape = SubResource("RectangleShape2D_1nl21")
