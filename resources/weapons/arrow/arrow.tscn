@@ -5,9 +5,11 @@
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkvn"]
 a = Vector2(-1, 1)
-b = Vector2(69, 1)
+b = Vector2(67, 1)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_6aam2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128149147]

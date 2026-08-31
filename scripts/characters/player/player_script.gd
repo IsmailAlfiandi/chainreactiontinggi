@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var max_power: float = 1400.0
 @export var min_power: float = 300.0
 @export var power_multiplier: float = 11.0
+@export var can_shoot: bool = true
 
 @onready var move_state: Sprite2D = $Weapon/moveState
 @onready var aim_state: Sprite2D = $Weapon/aimState
@@ -53,7 +54,7 @@ func handle_movement(delta: float):
 	bow_pivot.scale.x = 1 if is_facing_right else -1
 
 func handle_aim_input():
-	if Input.is_action_just_pressed("shoot"):  # bind this to mouse left or space
+	if Input.is_action_just_pressed("shoot") and can_shoot:  # bind this to mouse left or space
 		enter_aiming()
 
 func enter_aiming():
@@ -61,7 +62,6 @@ func enter_aiming():
 	current_power = min_power
 
 func handle_aiming(delta: float):
-	can_move = false
 	var mouse_pos = get_global_mouse_position()
 	aim_direction = (mouse_pos - bow_pivot.global_position).normalized()
 	
@@ -73,10 +73,11 @@ func handle_aiming(delta: float):
 	# Release to shoot
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		can_move = false
+		can_shoot = false
 		state = State.MOVE
 
 func shoot():
+	can_move = false
 	var arrow = arrow_scene.instantiate()
 	get_tree().current_scene.add_child(arrow)
 	
@@ -95,7 +96,6 @@ func shoot():
 
 	current_power = 0.0
 	bow_pivot.rotation = 0.0
-	can_move = true
 	
 func update_animation():
 	match state:
@@ -115,3 +115,4 @@ func update_animation():
 			
 func after_hit():
 	can_move = true
+	can_shoot = true
