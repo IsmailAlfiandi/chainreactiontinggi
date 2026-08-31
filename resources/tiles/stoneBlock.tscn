@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cm8we6qpr5ip0"]
+
+[ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="1_sas1v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi0np"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sas1v")
+}],
+"loop": 1,
+"name": &"fullHealth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf1v"]
+size = Vector2(98, 98)
+
+[node name="stoneBlock" type="RigidBody2D" unique_id=1584937468]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92616753]
+sprite_frames = SubResource("SpriteFrames_gi0np")
+animation = &"fullHealth"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067688389]
+shape = SubResource("RectangleShape2D_xwf1v")
