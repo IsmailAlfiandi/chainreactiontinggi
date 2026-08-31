@@ -4,9 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bfw8oenxwpik1" path="res://assets/character/player/player_alpha/dummyPlayer.png" id="2_1agwk"]
 [ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="3_8dq38"]
 [ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="4_8dq38"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://xregofdtiq51" path="res://assets/weapons/Spear.png" id="5_qfy82"]
 [ext_resource type="Texture2D" uid="uid://clrubibcmxir7" path="res://assets/weapons/p50.png" id="6_b1mp5"]
 [ext_resource type="Texture2D" uid="uid://bsefl1bojneef" path="res://assets/weapons/ARROW.png" id="7_b1mp5"]
+=======
+[ext_resource type="Texture2D" uid="uid://6b7rcux0mcl0" path="res://assets/weapons/shadowBowFixed.png" id="4_ylqjy"]
+>>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -24,6 +28,8 @@ radius = 26.0
 height = 106.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=233385622]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_1agwk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114300977]
@@ -36,10 +42,14 @@ shape = SubResource("CapsuleShape2D_so318")
 [node name="Weapon" type="Node2D" parent="." unique_id=232900444]
 position = Vector2(21, 17)
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=38650554]
+[node name="spriteMove" type="Sprite2D" parent="Weapon" unique_id=38650554]
 position = Vector2(9.536743e-07, 3.8146973e-06)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("3_8dq38")
+
+[node name="spriteAim" type="Sprite2D" parent="Weapon" unique_id=2038955760]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_ylqjy")
 
 [node name="BulletSpawn" type="Marker2D" parent="Weapon" unique_id=1325532789]
 position = Vector2(28, 14)
