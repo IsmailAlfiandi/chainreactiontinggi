@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="chainreactiontinggi"
-run/main_scene="uid://dtj1bdfd0v02k"
+run/main_scene="uid://cw02ih1p85wyg"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -10,8 +10,8 @@ extends CharacterBody2D
 @export var min_power: float = 300.0
 @export var power_multiplier: float = 11.0
 
-@onready var move_state: Sprite2D = $Weapon/spriteMove
-@onready var aim_state: Sprite2D = $Weapon/spriteAim
+@onready var move_state: Sprite2D = $Weapon/moveState
+@onready var aim_state: Sprite2D = $Weapon/aimState
 @onready var bow_pivot: Node2D = $Weapon
 @onready var arrow_spawn: Marker2D = $Weapon/BulletSpawn
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

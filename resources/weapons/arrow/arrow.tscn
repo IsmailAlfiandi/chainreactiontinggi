@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://bsefl1bojneef" path="res://assets/weapons/Arrow.png" id="1_e0ecy"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkvn"]
-a = Vector2(-7, 0)
-b = Vector2(20, 23)
+a = Vector2(-1, 1)
+b = Vector2(69, 1)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353]
 script = ExtResource("1_6aam2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128149147]
 position = Vector2(72.5, 49.499996)
-scale = Vector2(2.1328125, 1.7734374)
+scale = Vector2(1, 0.831)
 texture = ExtResource("1_e0ecy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176653609]
-position = Vector2(13, 25)
+position = Vector2(44, 38)
 shape = SubResource("SegmentShape2D_kvkvn")

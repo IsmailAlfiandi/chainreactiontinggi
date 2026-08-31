@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d26ke6m60fwu0"]
+
+[ext_resource type="Script" uid="uid://b16t10obdq21x" path="res://scripts/characters/player/player_script.gd" id="1_yy6g8"]
+[ext_resource type="Texture2D" uid="uid://bfw8oenxwpik1" path="res://assets/character/player/player_alpha/dummyPlayer.png" id="2_v80y2"]
+[ext_resource type="Texture2D" uid="uid://6b7rcux0mcl0" path="res://assets/weapons/shadowBowFixed.png" id="3_mcdla"]
+[ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="3_v80y2"]
+[ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="4_8gddl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v80y2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nl21"]
+radius = 29.0
+height = 102.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1293644888]
+script = ExtResource("1_yy6g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=639977593]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557888533]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_1nl21")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1312030188]
+position = Vector2(31, 21)
+
+[node name="aimState" type="Sprite2D" parent="Weapon" unique_id=1311041298]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_mcdla")
+
+[node name="moveState" type="Sprite2D" parent="Weapon" unique_id=238283951]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_8gddl")
+
+[node name="BulletSpawn" type="Marker2D" parent="Weapon" unique_id=1865948968]
+position = Vector2(22, 11)
+
+[node name="camera" type="Camera2D" parent="." unique_id=1610177693]
+script = ExtResource("3_v80y2")
