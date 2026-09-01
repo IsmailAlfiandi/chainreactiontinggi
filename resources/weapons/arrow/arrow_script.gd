@@ -8,6 +8,7 @@ extends RigidBody2D
 var has_landed := false
 var camera_returned := false
 
+<<<<<<< Updated upstream
 
 func _ready():
 	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
@@ -15,6 +16,16 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 
 	# Lifetime arrow tetap 8 detik
+=======
+# Store the velocity from the previous physics frame
+var last_velocity: Vector2 = Vector2.ZERO
+
+func _ready():
+	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
+	contact_monitor = true
+	max_contacts_reported = 4
+	
+>>>>>>> Stashed changes
 	await get_tree().create_timer(lifetime).timeout
 
 	if is_instance_valid(self):
@@ -26,6 +37,7 @@ func _ready():
 func _physics_process(delta: float):
 	if has_landed:
 		return
+<<<<<<< Updated upstream
 
 	# Arrow mengikuti arah terbang
 	if linear_velocity.length() > 20.0:
@@ -33,10 +45,23 @@ func _physics_process(delta: float):
 		rotation = lerp_angle(rotation, target_angle, 12.0 * delta)
 
 	# Arrow sudah terlalu pelan
+=======
+	
+	# Always save the current velocity
+	last_velocity = linear_velocity
+	
+	# Rotate while flying
+	if linear_velocity.length() > 20.0:
+		var target_angle = linear_velocity.angle()
+		rotation = lerp_angle(rotation, target_angle, 12.0 * delta)
+	
+	# Normal ground landing
+>>>>>>> Stashed changes
 	if linear_velocity.length() < stop_speed:
 		has_landed = true
 		_on_landed()
 
+<<<<<<< Updated upstream
 
 func _on_body_entered(body: Node):
 	if has_landed:
@@ -93,20 +118,48 @@ func _on_body_entered(body: Node):
 	_on_landed()
 
 
+=======
+func _on_body_entered(body: Node) -> void:
+	if has_landed:
+		return
+	
+	# Hit a Block
+	if body is Block:
+		body.take_hit(last_velocity, self)
+		
+		has_landed = true
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0.0
+		freeze = true
+		lock_rotation = true
+		return
+	
+	# Normal ground
+	has_landed = true
+	_on_landed()
+
+>>>>>>> Stashed changes
 func _on_landed():
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 	freeze = true
 	lock_rotation = true
+<<<<<<< Updated upstream
 
 	await get_tree().create_timer(0.4).timeout
 
 	# Ambil player
+=======
+	
+	await get_tree().create_timer(1.0).timeout
+	
+>>>>>>> Stashed changes
 	var player = get_tree().get_first_node_in_group("player")
 
 	# Player bisa bergerak lagi
 	if player and player.has_method("after_hit"):
 		player.after_hit()
+<<<<<<< Updated upstream
 
 	# Kamera langsung kembali ke player
 	if not camera_returned and player:
@@ -115,6 +168,11 @@ func _on_landed():
 		if camera and camera.has_method("follow"):
 			camera.follow(player)
 
+=======
+	
+	if not camera_returned:
+		return_camera_to_player()
+>>>>>>> Stashed changes
 		camera_returned = true
 
 

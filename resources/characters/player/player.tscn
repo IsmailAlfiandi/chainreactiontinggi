@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://6b7rcux0mcl0" path="res://assets/weapons/shadowBowFixed.png" id="3_mcdla"]
 [ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="3_v80y2"]
 [ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="4_8gddl"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/tiles/steelBlock.tscn" id="6_8gddl"]
+=======
+[ext_resource type="Script" uid="uid://ux4iwi0qbrsn" path="res://resources/characters/player/aim_ui.gd" id="6_8gddl"]
+>>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -21,6 +25,10 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nl21"]
 radius = 29.0
 height = 102.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gddl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvkvn"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1293644888]
 script = ExtResource("1_yy6g8")
@@ -45,10 +53,52 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("4_8gddl")
 
 [node name="BulletSpawn" type="Marker2D" parent="Weapon" unique_id=1865948968]
-position = Vector2(22, 11)
+position = Vector2(31, -13)
 
 [node name="camera" type="Camera2D" parent="." unique_id=1610177693]
 script = ExtResource("3_v80y2")
 
+<<<<<<< Updated upstream
 [node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("6_8gddl")]
 position = Vector2(260, 41)
+=======
+[node name="AimUI" type="Control" parent="." unique_id=426822915]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = -37.0
+offset_bottom = -18.0
+script = ExtResource("6_8gddl")
+
+[node name="powerLabel" type="Label" parent="AimUI" unique_id=710728133]
+modulate = Color(1, 0.029999971, 0.12699986, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.26700002
+anchor_top = -1.57
+anchor_right = -0.26700002
+anchor_bottom = -1.57
+offset_left = 29.602
+offset_top = -11.169998
+offset_right = 73.602
+offset_bottom = 37.83
+text = "Angle"
+label_settings = SubResource("LabelSettings_8gddl")
+horizontal_alignment = 1
+
+[node name="angleLabel" type="Label" parent="AimUI" unique_id=1309403734]
+modulate = Color(1, 0.01999998, 0.01999998, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.128
+anchor_top = -1.508
+anchor_right = 0.128
+anchor_bottom = -1.508
+offset_left = -74.768
+offset_top = -12.348
+offset_right = -25.768
+offset_bottom = 10.652
+text = "Power"
+label_settings = SubResource("LabelSettings_kvkvn")
+horizontal_alignment = 1
+>>>>>>> Stashed changes

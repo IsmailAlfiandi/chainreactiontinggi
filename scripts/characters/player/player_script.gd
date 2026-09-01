@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var can_move: bool = true
 
 # === Bow / Shooting ===
-@export var max_power: float = 1400.0
+@export var max_power: float = 1900.0
 @export var min_power: float = 300.0
 @export var power_multiplier: float = 11.0
 @export var can_shoot: bool = true
@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var bow_pivot: Node2D = $Weapon
 @onready var arrow_spawn: Marker2D = $Weapon/BulletSpawn
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var aim_ui: Control = $AimUI
 
 var arrow_scene = preload("res://resources/weapons/arrow/arrow.tscn")
 
@@ -90,11 +91,13 @@ func handle_aiming(delta: float):
 		max_power
 	)
 	
+	aim_ui.show_aim(current_power, aim_direction.angle(), max_power)
 	# Second click → shoot
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		can_shoot = false
 		state = State.MOVE
+		aim_ui.hide_aim()
 
 func shoot():
 	can_move = false

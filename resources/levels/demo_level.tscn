@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cdh8538p5riob" path="res://assets/templates/kenney_new-platformer-pack-1.1/Sprites/Backgrounds/Default/background_clouds.png" id="1_fqws5"]
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/tiles/default_tileset.tres" id="2_5nf0e"]
 [ext_resource type="PackedScene" uid="uid://d26ke6m60fwu0" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
+[ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/tiles/woodblock.tscn" id="4_5nf0e"]
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
 
@@ -18,3 +19,6 @@ layer_0/tile_data = PackedInt32Array(458756, 720896, 9, 458755, 720896, 9, 45875
 
 [node name="CharacterBody2D" parent="." unique_id=233385622 instance=ExtResource("3_vvnjs")]
 position = Vector2(164, 392)
+
+[node name="woodBlock" parent="." unique_id=1278837116 instance=ExtResource("4_5nf0e")]
+position = Vector2(859, 398)
