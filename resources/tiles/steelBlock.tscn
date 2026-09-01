@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://clfft6n70voan"]
 
+[ext_resource type="Script" uid="uid://blja7jdgyprcl" path="res://scripts/tiles/steel_block.gd" id="1_6wj14"]
 [ext_resource type="Texture2D" uid="uid://be1877cg70nb1" path="res://assets/tiles/structure/steel/steelblocknatural.png" id="1_vmukd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
@@ -17,10 +18,12 @@ animations = [{
 size = Vector2(98, 98)
 
 [node name="steelBlock" type="RigidBody2D" unique_id=1160310445]
+script = ExtResource("1_6wj14")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653458812]
 sprite_frames = SubResource("SpriteFrames_kvkvn")
 animation = &"fullHealth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180516912]
+position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_1nl21")

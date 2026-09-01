@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6b7rcux0mcl0" path="res://assets/weapons/shadowBowFixed.png" id="3_mcdla"]
 [ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="3_v80y2"]
 [ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="4_8gddl"]
+[ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/tiles/steelBlock.tscn" id="6_8gddl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -48,3 +49,6 @@ position = Vector2(22, 11)
 
 [node name="camera" type="Camera2D" parent="." unique_id=1610177693]
 script = ExtResource("3_v80y2")
+
+[node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("6_8gddl")]
+position = Vector2(260, 41)
