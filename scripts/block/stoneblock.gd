@@ -1,8 +1,8 @@
 extends RigidBody2D
-class_name WoodBlock
+class_name StoneBlock
 
-enum MaterialType { WOOD, STONE, STEEL }
-@export var material_type: MaterialType = MaterialType.WOOD
+enum MaterialType { WOOD, STONE, STEEL, TNT }
+@export var material_type: MaterialType = MaterialType.STONE
 @export var push_speed: float = 300.0
 @export var destroy_speed: float = 700.0
 
@@ -34,7 +34,6 @@ func _ready():
 func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> void:
 	var impact_speed = arrow_velocity.length()
 	
-	print("Impact speed: ", impact_speed)
 	if impact_speed >= destroy_speed:
 		destroy_block()
 	elif impact_speed >= push_speed:

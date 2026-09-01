@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://fjvnuyc85m73"]
 
+[ext_resource type="Script" uid="uid://tg2h4aotyqjf" path="res://scripts/block/tnt.gd" id="1_a68nb"]
 [ext_resource type="Texture2D" uid="uid://t4bp8vbk7sqy" path="res://assets/tiles/expslosive/tnt/1000415777.png" id="1_rfjcn"]
 [ext_resource type="Texture2D" uid="uid://cpu5q32fngu2l" path="res://assets/tiles/expslosive/tnt/1000415778.png" id="2_a68nb"]
 [ext_resource type="Texture2D" uid="uid://bmhgba7puqk8r" path="res://assets/tiles/expslosive/tnt/1000415779.png" id="3_3slb0"]
@@ -17,7 +18,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_3slb0")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"explode",
 "speed": 5.0
 }, {
@@ -25,20 +26,21 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_81lml")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrbwm"]
-size = Vector2(219, 154)
+size = Vector2(100, 99)
 
 [node name="TNT" type="RigidBody2D" unique_id=1260058245]
+script = ExtResource("1_a68nb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=8788193]
 sprite_frames = SubResource("SpriteFrames_kvkvn")
-animation = &"idle"
+animation = &"explode"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=112776934]
-position = Vector2(-0.5, -1)
+position = Vector2(50, -0.5)
 shape = SubResource("RectangleShape2D_nrbwm")

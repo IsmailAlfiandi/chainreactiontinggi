@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/tiles/default_tileset.tres" id="2_5nf0e"]
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
 [ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/tiles/woodBlock.tscn" id="4_5nf0e"]
-
+[ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="5_vvnjs"]
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
 
@@ -23,3 +23,6 @@ position = Vector2(164, 392)
 
 [node name="woodBlock" parent="." unique_id=1278837116 instance=ExtResource("4_5nf0e")]
 position = Vector2(859, 398)
+
+[node name="TNT" parent="." unique_id=1260058245 instance=ExtResource("5_vvnjs")]
+position = Vector2(686, 396)

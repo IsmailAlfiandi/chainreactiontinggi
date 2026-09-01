@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cm8we6qpr5ip0"]
 
+[ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_ewdnc"]
 [ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="1_sas1v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gi0np"]
@@ -17,6 +18,7 @@ animations = [{
 size = Vector2(98, 98)
 
 [node name="stoneBlock" type="RigidBody2D" unique_id=1584937468]
+script = ExtResource("1_ewdnc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92616753]
 sprite_frames = SubResource("SpriteFrames_gi0np")

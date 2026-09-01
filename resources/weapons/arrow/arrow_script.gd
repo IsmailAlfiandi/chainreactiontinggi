@@ -40,7 +40,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	
 	# Hit a Block?
-	if body is Block:
+	if body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
 		# Use the velocity from BEFORE the collision
 		body.take_hit(last_velocity, self)
 		
