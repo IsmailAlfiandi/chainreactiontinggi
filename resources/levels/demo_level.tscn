@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cdh8538p5riob" path="res://assets/templates/kenney_new-platformer-pack-1.1/Sprites/Backgrounds/Default/background_clouds.png" id="1_fqws5"]
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/tiles/default_tileset.tres" id="2_5nf0e"]
-[ext_resource type="PackedScene" uid="uid://d26ke6m60fwu0" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
-[ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/tiles/woodblock.tscn" id="4_5nf0e"]
+[ext_resource type="PackedScene" uid="uid://d26ke6m60fwu0" path="res://resources/characters/player/player_test.tscn" id="3_vvnjs"]
+[ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/tiles/woodBlock.tscn" id="4_5nf0e"]
+
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
 

@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 # === Movement ===
 @export var speed: float = 220.0
 @export var acceleration: float = 1800.0
@@ -19,11 +18,12 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var aim_ui: Control = $AimUI
 
-var arrow_scene = preload("res://resources/weapons/arrow/arrow.tscn")
+var arrow_scene = preload("res://resources/weapons/arrow/arrow.tscn")   # your projectile (RigidBody2D)
 
 # States
 enum State { MOVE, AIMING }
 var state: State = State.MOVE
+
 var current_power: float = 0.0
 var aim_direction: Vector2 = Vector2.RIGHT
 var is_facing_right: bool = true
@@ -39,19 +39,20 @@ func _physics_process(delta: float):
 		State.AIMING:
 			handle_aiming(delta)
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
-	
+
 	move_and_slide()
 	update_animation()
 
 func handle_movement(delta: float):
 	var direction = Input.get_axis("move_left", "move_right")
-	
+
 	if direction != 0 and can_move:
 		velocity.x = move_toward(
 			velocity.x,
 			direction * speed,
 			acceleration * delta
 		)
+
 		is_facing_right = direction > 0
 	else:
 		velocity.x = move_toward(
@@ -59,18 +60,17 @@ func handle_movement(delta: float):
 			0,
 			friction * delta
 		)
-	
+
 	animated_sprite.flip_h = not is_facing_right
-	
-	# Move bow to the correct side
+
+	# Pindahkan bow ke sisi karakter
 	if is_facing_right:
 		bow_pivot.position.x = abs(bow_pivot.position.x)
 	else:
 		bow_pivot.position.x = -abs(bow_pivot.position.x)
 
 func handle_aim_input():
-	# First click → enter aiming
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	if Input.is_action_just_pressed("shoot") and can_shoot:  # bind this to mouse left or space
 		enter_aiming()
 
 func enter_aiming():
@@ -80,20 +80,25 @@ func enter_aiming():
 func handle_aiming(delta: float):
 	var mouse_pos = get_global_mouse_position()
 	aim_direction = (mouse_pos - bow_pivot.global_position).normalized()
-	
-	# Bow follows mouse
+
+	# Arah bow mengikuti mouse
 	bow_pivot.rotation = aim_direction.angle()
-	
+
 	var distance = bow_pivot.global_position.distance_to(mouse_pos)
 	current_power = clamp(
 		distance * power_multiplier,
 		min_power,
 		max_power
 	)
+<<<<<<< HEAD
 	
 	aim_ui.show_aim(current_power, aim_direction.angle(), max_power)
 	# Second click → shoot
 	if Input.is_action_just_pressed("shoot"):
+=======
+
+	if Input.is_action_just_released("shoot"):
+>>>>>>> parent of 5f635a3 (fixing player bug part 2)
 		shoot()
 		can_shoot = false
 		state = State.MOVE
@@ -101,7 +106,6 @@ func handle_aiming(delta: float):
 
 func shoot():
 	can_move = false
-	
 	var arrow = arrow_scene.instantiate()
 	get_tree().current_scene.add_child(arrow)
 	
@@ -113,29 +117,35 @@ func shoot():
 	
 	# Optional: small torque for realism
 	arrow.apply_torque_impulse(randf_range(-30, 30))
-	
+
 	var camera = get_tree().get_first_node_in_group("camera")
 	if camera:
 		camera.follow(arrow)
+
+		# Setelah arrow dihapus, kamera kembali ke player
 		arrow.tree_exited.connect(func():
 			camera.follow(self)
 		)
-	
+
 	current_power = 0.0
 	bow_pivot.rotation = 0.0
-
+	
 func update_animation():
 	match state:
 		State.MOVE:
 			move_state.visible = true
 			aim_state.visible = false
+			
+			# Optional: flip the move sprite
 			move_state.flip_h = not is_facing_right
 			
 		State.AIMING:
 			move_state.visible = false
 			aim_state.visible = true
+			
+			# Optional: flip the aim sprite too
 			aim_state.flip_h = not is_facing_right
-
+			
 func after_hit():
 	can_move = true
 	can_shoot = true
