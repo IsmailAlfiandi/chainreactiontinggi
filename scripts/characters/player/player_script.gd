@@ -11,10 +11,10 @@ extends CharacterBody2D
 @export var power_multiplier: float = 11.0
 @export var can_shoot: bool = true
 
-@onready var move_state: Sprite2D = $Weapon/moveState
-@onready var aim_state: Sprite2D = $Weapon/aimState
-@onready var bow_pivot: Node2D = $Weapon
-@onready var arrow_spawn: Marker2D = $Weapon/BulletSpawn
+@onready var move_state: Sprite2D = $State/moveState
+@onready var aim_state: Sprite2D = $State/aimState
+@onready var bow_pivot: Node2D = $State
+@onready var arrow_spawn: Marker2D = $State/bulletSpawn
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var aim_ui: Control = $AimUI
 
@@ -90,17 +90,11 @@ func handle_aiming(delta: float):
 		min_power,
 		max_power
 	)
-<<<<<<< HEAD
-	
 	aim_ui.show_aim(current_power, aim_direction.angle(), max_power)
-	# Second click → shoot
-	if Input.is_action_just_pressed("shoot"):
-=======
 
-	if Input.is_action_just_released("shoot"):
->>>>>>> parent of 5f635a3 (fixing player bug part 2)
-		shoot()
+	if Input.is_action_just_pressed("shoot") and can_shoot:
 		can_shoot = false
+		shoot()
 		state = State.MOVE
 		aim_ui.hide_aim()
 

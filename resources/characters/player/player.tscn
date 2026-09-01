@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b16t10obdq21x" path="res://scripts/characters/player/player_script.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bfw8oenxwpik1" path="res://assets/character/player/player_alpha/dummyPlayer.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://6b7rcux0mcl0" path="res://assets/weapons/shadowBowFixed.png" id="3_8gddl"]
+[ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="3_hqtel"]
+[ext_resource type="Script" uid="uid://ux4iwi0qbrsn" path="res://resources/characters/player/aim_ui.gd" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="4_symwr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -18,6 +22,10 @@ animations = [{
 radius = 27.0
 height = 98.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_1jxqw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2hs0m"]
+
 [node name="Player" type="CharacterBody2D" unique_id=266717279]
 script = ExtResource("1_onrkg")
 
@@ -30,27 +38,45 @@ position = Vector2(2, 5)
 shape = SubResource("CapsuleShape2D_1nl21")
 
 [node name="State" type="Node2D" parent="." unique_id=612871588]
+position = Vector2(31, 20)
 
 [node name="aimState" type="Sprite2D" parent="State" unique_id=678059656]
+texture = ExtResource("3_8gddl")
 
 [node name="moveState" type="Sprite2D" parent="State" unique_id=1850204095]
+texture = ExtResource("4_symwr")
 
 [node name="bulletSpawn" type="Marker2D" parent="State" unique_id=1699223040]
+position = Vector2(21, -10)
 
 [node name="camera" type="Camera2D" parent="." unique_id=401302433]
+script = ExtResource("3_hqtel")
 
-[node name="Control" type="Control" parent="." unique_id=1551319980]
+[node name="AimUI" type="Control" parent="." unique_id=1551319980]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_sweqy")
 
-[node name="powerBar" type="Label" parent="Control" unique_id=1464825036]
+[node name="powerLabel" type="Label" parent="AimUI" unique_id=1464825036]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -30.0
+offset_top = -100.0
+offset_right = 10.0
+offset_bottom = -77.0
+label_settings = SubResource("LabelSettings_1jxqw")
+horizontal_alignment = 1
 
-[node name="angleBar" type="Label" parent="Control" unique_id=59260433]
+[node name="angleLabel" type="Label" parent="AimUI" unique_id=59260433]
+modulate = Color(1, 0, 0, 1)
+light_mask = 2
+visibility_layer = 2
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -30.0
+offset_top = -75.0
+offset_right = 10.0
+offset_bottom = -52.0
+label_settings = SubResource("LabelSettings_2hs0m")
+horizontal_alignment = 1

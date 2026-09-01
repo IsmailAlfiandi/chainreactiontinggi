@@ -7,16 +7,10 @@
 a = Vector2(-1, 1)
 b = Vector2(67, 1)
 
-<<<<<<< Updated upstream
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353]
-=======
-[node name="Arrow" type="RigidBody2D" unique_id=1550399353]
-collision_layer = 2
-collision_mask = 2
 continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4
->>>>>>> Stashed changes
 script = ExtResource("1_6aam2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128149147]
