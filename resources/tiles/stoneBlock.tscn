@@ -5,12 +5,22 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gi0np"]
 animations = [{
+"frames": [],
+"loop": 1,
+"name": &"criticalHealth",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_sas1v")
 }],
 "loop": 1,
 "name": &"fullHealth",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"halfHealth",
 "speed": 5.0
 }]
 
@@ -22,7 +32,7 @@ script = ExtResource("1_ewdnc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92616753]
 sprite_frames = SubResource("SpriteFrames_gi0np")
-animation = &"fullHealth"
+animation = &"criticalHealth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067688389]
 shape = SubResource("RectangleShape2D_xwf1v")

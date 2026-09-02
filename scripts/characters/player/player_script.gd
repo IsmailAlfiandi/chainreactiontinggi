@@ -91,7 +91,9 @@ func handle_aiming(delta: float):
 		max_power
 	)
 	aim_ui.show_aim(current_power, aim_direction.angle(), max_power)
-
+	if Input.is_action_just_pressed("right_click"):
+		state = State.MOVE
+		aim_ui.hide_aim()
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		can_shoot = false
 		shoot()

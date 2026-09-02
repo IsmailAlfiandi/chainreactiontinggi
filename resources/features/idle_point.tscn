@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d0or4ffes4ky1"]
+
+[ext_resource type="Script" uid="uid://rpy00j1a31wp" path="res://scripts/features/idle_point.gd" id="1_e3g4d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
+radius = 18.110771
+
+[node name="Area2D" type="Area2D" unique_id=306426809 groups=["idle_point"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_e3g4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=852883149]
+shape = SubResource("CircleShape2D_kvkvn")

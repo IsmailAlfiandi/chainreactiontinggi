@@ -18,6 +18,8 @@ animations = [{
 size = Vector2(98, 98)
 
 [node name="steelBlock" type="RigidBody2D" unique_id=1160310445]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_6wj14")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653458812]
