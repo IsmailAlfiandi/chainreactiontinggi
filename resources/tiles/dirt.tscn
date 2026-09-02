@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bvh7jqyupy844"]
+
+[ext_resource type="Texture2D" uid="uid://b1utvme2uebiy" path="res://assets/tiles/environments/dirt.png" id="1_uywm0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvkvn"]
+size = Vector2(64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=260186561]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956880747]
+position = Vector2(-1, -1)
+texture = ExtResource("1_uywm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687038776]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kvkvn")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cm8we6qpr5ip0"]
+[gd_scene format=3 uid="uid://dh3quui24fy45"]
 
 [ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_ewdnc"]
 [ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="1_sas1v"]

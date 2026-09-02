@@ -1,53 +1,43 @@
 [gd_scene format=3 uid="uid://c1xsf57846kaq"]
 
-[ext_resource type="Texture2D" uid="uid://b4iqtlpv3wmek" path="res://assets/character/enemy/ghost/1000415446.png" id="1_qpfs3"]
-[ext_resource type="Texture2D" uid="uid://dffpsf7ikncyc" path="res://assets/character/enemy/ghost/1000415447.png" id="2_cmlmd"]
-[ext_resource type="Texture2D" uid="uid://bo6w253kab6vj" path="res://assets/character/enemy/ghost/1000415448.png" id="3_aa5wh"]
-[ext_resource type="Texture2D" uid="uid://bbi3h4nebsn4g" path="res://assets/character/enemy/ghost/1000415441.png" id="4_dkt7p"]
-[ext_resource type="Texture2D" uid="uid://lmp0fwel780x" path="res://assets/character/enemy/ghost/1000415442.png" id="5_13dvi"]
+[ext_resource type="Script" uid="uid://fh8xgnvhuhhd" path="res://scripts/characters/enemy/ghost/ghost.gd" id="1_6w8gj"]
+[ext_resource type="Texture2D" uid="uid://b4iqtlpv3wmek" path="res://assets/character/enemy/ghost/1000415446.png" id="1_cx0xu"]
+[ext_resource type="Texture2D" uid="uid://dffpsf7ikncyc" path="res://assets/character/enemy/ghost/1000415447.png" id="2_6w8gj"]
+[ext_resource type="Texture2D" uid="uid://bo6w253kab6vj" path="res://assets/character/enemy/ghost/1000415448.png" id="3_qpfs3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qpfs3")
+"texture": ExtResource("1_cx0xu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_cmlmd")
+"texture": ExtResource("2_6w8gj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_aa5wh")
+"texture": ExtResource("3_qpfs3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_cmlmd")
+"texture": ExtResource("2_6w8gj")
 }],
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_dkt7p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_13dvi")
-}],
-"loop": 1,
-"name": &"walk",
-"speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wj14"]
-radius = 112.0
-height = 328.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4icvx"]
+radius = 33.0
+height = 94.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1115608176]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1480107330]
+script = ExtResource("1_6w8gj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1170677153]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1360887720]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kvkvn")
 animation = &"idle"
-frame_progress = 0.10885244
+frame_progress = 0.63256216
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=876084171]
-position = Vector2(-16, -13)
-shape = SubResource("CapsuleShape2D_6wj14")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1351375142]
+position = Vector2(-3, -4)
+shape = SubResource("CapsuleShape2D_4icvx")

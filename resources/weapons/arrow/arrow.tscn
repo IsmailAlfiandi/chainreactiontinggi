@@ -8,6 +8,8 @@ a = Vector2(-1, 1)
 b = Vector2(67, 1)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353]
+collision_layer = 2
+collision_mask = 2
 continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4

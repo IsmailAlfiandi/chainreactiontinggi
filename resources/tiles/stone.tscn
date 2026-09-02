@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dvdg7ucu2q300"]
+
+[ext_resource type="Texture2D" uid="uid://bp0nfxofmundd" path="res://assets/tiles/environments/stone.png" id="1_s323g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvkvn"]
+size = Vector2(64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1702073636]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978888806]
+position = Vector2(2, 2)
+texture = ExtResource("1_s323g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192204921]
+visible = false
+position = Vector2(-2, -3)
+shape = SubResource("RectangleShape2D_kvkvn")
