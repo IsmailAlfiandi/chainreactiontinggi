@@ -26,7 +26,14 @@ height = 98.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_2hs0m"]
 
-[node name="Player" type="CharacterBody2D" unique_id=266717279]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nl21"]
+bg_color = Color(0.6, 0.6, 0.6, 0.4862745)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="player" type="CharacterBody2D" unique_id=266717279]
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=307252221]
@@ -80,3 +87,44 @@ offset_right = 10.0
 offset_bottom = -52.0
 label_settings = SubResource("LabelSettings_2hs0m")
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1024626011]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.0
+offset_top = 69.0
+offset_right = 21.0
+offset_bottom = 109.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=467364483]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 39.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1nl21")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel" unique_id=1079734799]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 44.0
+offset_bottom = 39.0
+scale = Vector2(0.8, 0.8)
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/Panel/HBoxContainer" unique_id=1159848946]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_mask = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="Control/Panel/HBoxContainer" unique_id=208825727]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_mask = 3
+text = "2"
+
+[connection signal="pressed" from="Control/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

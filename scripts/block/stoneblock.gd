@@ -3,7 +3,7 @@ class_name StoneBlock
 
 enum MaterialType { WOOD, STONE, STEEL }
 
-@export var material_type: MaterialType = MaterialType.WOOD
+@export var material_type: MaterialType = MaterialType.STONE
 @export var push_speed: float = 300.0
 @export var destroy_speed: float = 700.0
 @export var push_force_multiplier: float = 1.0
@@ -46,6 +46,7 @@ func _ready():
 
 	update_sprite()
 
+
 func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> void:
 	var impact_speed = arrow_velocity.length()
 	print("Impact speed: ", impact_speed)
@@ -80,7 +81,7 @@ func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> void:
 		destroy_block()
 
 func update_sprite() -> void:
-	if not AnimatedSprite2D:
+	if not anim:
 		return
 
 	var health_percent = current_health / max_health
@@ -94,8 +95,8 @@ func update_sprite() -> void:
 
 
 func destroy_block() -> void:
-	# Optional: play particles / sound
-	# $DestroyParticles.emitting = true
-	# $DestroySound.play()
-	
+	for arrow in get_tree().get_nodes_in_group("arrow"):
+		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
+			arrow.queue_free()
+
 	queue_free()

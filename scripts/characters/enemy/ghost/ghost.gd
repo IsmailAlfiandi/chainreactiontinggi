@@ -4,8 +4,9 @@ class_name Ghost
 enum State { IDLE, WALK }
 var current_state: State = State.WALK
 
-@export var move_speed: float = 80.0
+@export var move_speed: float = 85.0
 @export var idle_time: float = 2.5
+@export var gravity: float = 980.0
 
 var idle_timer: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
@@ -18,6 +19,8 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	match current_state:
 		State.IDLE:
 			state_idle(delta)

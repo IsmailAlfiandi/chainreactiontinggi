@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bc4x5nmmnc478"]
+
+[ext_resource type="Script" uid="uid://bp17w127nvd8f" path="res://scripts/weapons/arrow_bomb.gd" id="1_yrftx"]
+[ext_resource type="Texture2D" uid="uid://cjyel6kx0cigb" path="res://assets/weapons/Arrowbomb.png" id="2_yrftx"]
+[ext_resource type="Texture2D" uid="uid://cpu5q32fngu2l" path="res://assets/tiles/expslosive/tnt/1000415778.png" id="3_yrftx"]
+[ext_resource type="Texture2D" uid="uid://bmhgba7puqk8r" path="res://assets/tiles/expslosive/tnt/1000415779.png" id="4_7wfng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yrftx")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yrftx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7wfng")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 4.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kvkvn"]
+a = Vector2(-1, 1)
+b = Vector2(67, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
+radius = 340.05295
+
+[node name="BombArrow" type="RigidBody2D" unique_id=1550399353 groups=["arrow"]]
+collision_layer = 2
+collision_mask = 14
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_yrftx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=569064088]
+position = Vector2(72.5, 49.499996)
+scale = Vector2(1, 0.831)
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"explode"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176653609]
+position = Vector2(44, 38)
+shape = SubResource("SegmentShape2D_kvkvn")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=1922393022]
+position = Vector2(70, 42)
+collision_layer = 0
+collision_mask = 255
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1166936803]
+position = Vector2(3, -3)
+shape = SubResource("CircleShape2D_kvkvn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

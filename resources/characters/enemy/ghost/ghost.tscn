@@ -45,7 +45,7 @@ height = 94.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
 radius = 64.195015
 
-[node name="idle_point" type="CharacterBody2D" unique_id=1480107330]
+[node name="ghost" type="CharacterBody2D" unique_id=1480107330]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_6w8gj")

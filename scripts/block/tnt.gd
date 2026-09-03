@@ -9,52 +9,102 @@ enum MaterialType { WOOD, STONE, STEEL, TNT }
 @export var explosion_force: float = 800.0
 @export var explosion_radius: float = 150.0
 @export var push_force_multiplier: float = 1.0
+
+# === Health ===
+@export var max_health: float = 100.0
+var current_health: float = 100.0
+
 @onready var anim = $AnimatedSprite2D
 
 func _ready() -> void:
 	anim.play("idle")
+	
 	match material_type:
 		MaterialType.WOOD:
 			mass = 2.0
 			push_speed = 280.0
 			destroy_speed = 750.0
 			push_force_multiplier = 1.0
+			max_health = 60.0
 		MaterialType.STONE:
 			mass = 6.0
 			push_speed = 450.0
 			destroy_speed = 900.0
 			push_force_multiplier = 1.0
+			max_health = 180.0
 		MaterialType.STEEL:
 			mass = 12.0
 			push_speed = 700.0
 			destroy_speed = 1300.0
 			push_force_multiplier = 0.7
+			max_health = 350.0
 		MaterialType.TNT:
 			mass = 3.0
 			push_speed = 50.0
-			destroy_speed = 80.0      # very easy to explode
+			destroy_speed = 80.0
 			push_force_multiplier = 0.5
-
+			max_health = 40.0          # TNT is fragile
+	
+	current_health = max_health
+	
 	contact_monitor = true
 	max_contacts_reported = 4
 
+# Called by normal arrows
 func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D = null) -> void:
 	var impact_speed = arrow_velocity.length()
 	
+	# Calculate damage from impact speed
+	var damage = 0.0
 	if impact_speed >= destroy_speed:
-		destroy_block()
+		damage = current_health          # one-shot kill
 	elif impact_speed >= push_speed:
+		damage = impact_speed * 0.08     # medium hit
+	else:
+		damage = impact_speed * 0.03     # weak hit
+	
+	_apply_damage(damage)
+	
+	# Still apply push force if it wasn't destroyed
+	if current_health > 0 and impact_speed >= push_speed:
 		var direction = arrow_velocity.normalized()
 		var force = direction * impact_speed * push_force_multiplier
 		apply_central_impulse(force)
 		
 		if arrow != null:
 			arrow.linear_velocity *= 0.55
-	else:
-		if arrow != null:
-			arrow.linear_velocity *= 0.85
+	elif arrow != null:
+		arrow.linear_velocity *= 0.85
+
+# Called by bomb arrow explosion
+func take_explosion_damage(amount: float) -> void:
+	_apply_damage(amount)
+
+func _apply_damage(amount: float) -> void:
+	if current_health <= 0:
+		return
+	
+	current_health -= amount
+	current_health = max(current_health, 0.0)
+	
+	# Optional: change sprite / flash when damaged
+	# update_sprite()
+	
+	if current_health <= 0:
+		destroy_block()
+
+# Optional helper if you later add damaged frames
+func update_sprite() -> void:
+	# Example:
+	# if current_health < max_health * 0.3:
+	#     anim.play("damaged")
+	pass
 
 func destroy_block() -> void:
+	# Prevent multiple explosions
+	if not is_instance_valid(self):
+		return
+	
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsShapeQueryParameters2D.new()
 	
@@ -72,12 +122,10 @@ func destroy_block() -> void:
 		if body == self:
 			continue
 		
-		# Wake up the body
 		if body is RigidBody2D:
 			body.sleeping = false
 			body.freeze = false
 		
-		# Apply strong force
 		if body is RigidBody2D:
 			var direction = (body.global_position - global_position).normalized()
 			var distance = global_position.distance_to(body.global_position)
@@ -85,17 +133,15 @@ func destroy_block() -> void:
 			var force_strength = explosion_force * (1.0 - clamp(distance / explosion_radius, 0.0, 1.0))
 			force_strength = max(force_strength, explosion_force * 0.4)
 			
-			body.apply_central_impulse(direction * force_strength * 4.0)  # stronger
+			body.apply_central_impulse(direction * force_strength * 4.0)
 		
-		# Destroy other blocks safely
+		# Chain reaction for other TNT
 		if body is TNTBlock:
-			# Call destroy directly (safer than take_hit with null)
 			body.destroy_block()
 		elif body.has_method("destroy_block"):
 			body.destroy_block()
 	
-	# Optional: spawn explosion effect here
+	# Play explosion animation then remove
 	anim.play("explode")
 	await anim.animation_finished
-
 	queue_free()

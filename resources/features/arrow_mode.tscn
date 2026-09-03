@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bcr3ycl1jjh0b"]
+
+[node name="arrowMode" type="Control" unique_id=2105473621]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 63.0
+offset_bottom = 29.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1956655658]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 29.0
+color = Color(1, 1, 1, 0.14117648)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=1853621942]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 49.0
+offset_bottom = 22.0
+alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/HBoxContainer" unique_id=2096751687]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+toggle_mode = true
+button_mask = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="ColorRect/HBoxContainer" unique_id=508420040]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "2"

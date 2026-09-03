@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_ewdnc"]
 [ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="1_sas1v"]
+[ext_resource type="Texture2D" uid="uid://bko0wwqk3bogd" path="res://assets/tiles/structure/steel/steelblockcritical.png" id="2_ltaxb"]
+[ext_resource type="Texture2D" uid="uid://bw02v3sdmn860" path="res://assets/tiles/structure/steel/steelblockhalf.png" id="4_epgov"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gi0np"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ltaxb")
+}],
 "loop": 1,
 "name": &"criticalHealth",
 "speed": 5.0
@@ -18,7 +23,10 @@ animations = [{
 "name": &"fullHealth",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_epgov")
+}],
 "loop": 1,
 "name": &"halfHealth",
 "speed": 5.0
@@ -28,11 +36,13 @@ animations = [{
 size = Vector2(98, 98)
 
 [node name="stoneBlock" type="RigidBody2D" unique_id=1584937468]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ewdnc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92616753]
 sprite_frames = SubResource("SpriteFrames_gi0np")
-animation = &"criticalHealth"
+animation = &"fullHealth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067688389]
 shape = SubResource("RectangleShape2D_xwf1v")

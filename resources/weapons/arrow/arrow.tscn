@@ -7,15 +7,13 @@
 a = Vector2(-1, 1)
 b = Vector2(67, 1)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=1550399353 groups=["arrow"]]
+[node name="arrow" type="RigidBody2D" unique_id=1550399353 groups=["arrow"]]
 collision_layer = 2
 collision_mask = 2
 continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_6aam2")
-lifetime = null
-stop_speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128149147]
 position = Vector2(72.5, 49.499996)
