@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b4ue5wr2luyo5"]
+
+[ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_yk2so"]
+[ext_resource type="Texture2D" uid="uid://b8gldfojcrsgw" path="res://assets/tiles/structure/stone/stoneladder.png" id="2_focwq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_focwq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="stoneStairs" type="RigidBody2D" unique_id=1148623654]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_yk2so")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574614148]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=530203358]
+polygon = PackedVector2Array(0, -1, -49, -50, -49, 49, 51, 49)

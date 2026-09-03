@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b2ifh7v2rbrrk"]
+
+[ext_resource type="Script" uid="uid://blja7jdgyprcl" path="res://scripts/tiles/steel_block.gd" id="1_8b248"]
+[ext_resource type="Texture2D" uid="uid://3a1knaoakrn2" path="res://assets/tiles/structure/steel/steelfoundationnatural-export.png" id="2_swktn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_swktn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(100, 25)
+
+[node name="steelLog" type="RigidBody2D" unique_id=699769446]
+script = ExtResource("1_8b248")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=28893934]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1216938967]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1nl21")

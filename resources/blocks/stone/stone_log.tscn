@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bowvy27r6oswu"]
+
+[ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_nraky"]
+[ext_resource type="Texture2D" uid="uid://cmbtdi06qrxiy" path="res://assets/tiles/structure/stone/stonelogfull.png" id="2_ok57i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ok57i")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(100, 25)
+
+[node name="stoneLog" type="RigidBody2D" unique_id=940366982]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_nraky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1058159461]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=424848470]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1nl21")

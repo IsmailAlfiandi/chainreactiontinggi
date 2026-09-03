@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bte172j4snfg1"]
+
+[ext_resource type="Script" uid="uid://dv82q6hg5bgdu" path="res://scripts/block/woodblock.gd" id="1_5d4so"]
+[ext_resource type="Texture2D" uid="uid://cy320dgd26k8f" path="res://assets/tiles/structure/wood/woodlogfull.png" id="2_1ynum"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1ynum")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(100, 25)
+
+[node name="woodLog" type="RigidBody2D" unique_id=23274698]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_5d4so")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910274356]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156776463]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_1nl21")

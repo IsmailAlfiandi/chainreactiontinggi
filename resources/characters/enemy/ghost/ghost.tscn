@@ -40,7 +40,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4icvx"]
 radius = 33.0
-height = 94.0
+height = 68.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
 radius = 64.195015
@@ -51,13 +51,12 @@ collision_mask = 3
 script = ExtResource("1_6w8gj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1360887720]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_kvkvn")
 animation = &"walk"
-frame_progress = 0.20082562
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1351375142]
-position = Vector2(-3, -4)
+position = Vector2(-3, 0)
 shape = SubResource("CapsuleShape2D_4icvx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1112635449]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vl16qkq2pvqh"
-path="res://.godot/imported/ironladder.png-b610f76ecfd7590fdb82d9fd65b7b4da.ctex"
+uid="uid://bwc4cr0p5arkv"
+path="res://.godot/imported/ironladder.png-38cfa2a82bba2cd61f312870a08d991c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/structure/wood/ironladder.png"
-dest_files=["res://.godot/imported/ironladder.png-b610f76ecfd7590fdb82d9fd65b7b4da.ctex"]
+source_file="res://assets/tiles/structure/steel/ironladder.png"
+dest_files=["res://.godot/imported/ironladder.png-38cfa2a82bba2cd61f312870a08d991c.ctex"]
 
 [params]
 

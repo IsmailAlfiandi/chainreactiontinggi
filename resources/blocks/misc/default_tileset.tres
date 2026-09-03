@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" format=3 uid="uid://cphy0glwlq30a"]
 
 [ext_resource type="Texture2D" uid="uid://cudaeb7dlvgg4" path="res://assets/templates/kenney_new-platformer-pack-1.1/Spritesheets/spritesheet-tiles-default.png" id="1_nrbwm"]
-[ext_resource type="PackedScene" uid="uid://bvh7jqyupy844" path="res://resources/tiles/dirt.tscn" id="2_qf4ca"]
-[ext_resource type="PackedScene" uid="uid://dvdg7ucu2q300" path="res://resources/tiles/stone.tscn" id="3_a0rxt"]
+[ext_resource type="PackedScene" uid="uid://bvh7jqyupy844" path="res://resources/blocks/misc/dirt.tscn" id="2_qf4ca"]
+[ext_resource type="PackedScene" uid="uid://dvdg7ucu2q300" path="res://resources/blocks/misc/stone.tscn" id="3_a0rxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf4ca"]
 texture = ExtResource("1_nrbwm")

@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://dh3quui24fy45"]
 
-[ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_ewdnc"]
-[ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="1_sas1v"]
-[ext_resource type="Texture2D" uid="uid://bko0wwqk3bogd" path="res://assets/tiles/structure/steel/steelblockcritical.png" id="2_ltaxb"]
-[ext_resource type="Texture2D" uid="uid://bw02v3sdmn860" path="res://assets/tiles/structure/steel/steelblockhalf.png" id="4_epgov"]
+[ext_resource type="Script" uid="uid://cjc15s2y8wurh" path="res://scripts/block/stoneblock.gd" id="1_rubry"]
+[ext_resource type="Texture2D" uid="uid://bko0wwqk3bogd" path="res://assets/tiles/structure/steel/steelblockcritical.png" id="2_i1hq8"]
+[ext_resource type="Texture2D" uid="uid://dhft2416v7jah" path="res://assets/tiles/structure/stone/stoneblocknatural.png" id="3_vkxfb"]
+[ext_resource type="Texture2D" uid="uid://bw02v3sdmn860" path="res://assets/tiles/structure/steel/steelblockhalf.png" id="4_t3fh8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gi0np"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ltaxb")
+"texture": ExtResource("2_i1hq8")
 }],
 "loop": 1,
 "name": &"criticalHealth",
@@ -17,7 +17,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_sas1v")
+"texture": ExtResource("3_vkxfb")
 }],
 "loop": 1,
 "name": &"fullHealth",
@@ -25,7 +25,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_epgov")
+"texture": ExtResource("4_t3fh8")
 }],
 "loop": 1,
 "name": &"halfHealth",
@@ -38,7 +38,7 @@ size = Vector2(98, 98)
 [node name="stoneBlock" type="RigidBody2D" unique_id=1584937468]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_ewdnc")
+script = ExtResource("1_rubry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92616753]
 sprite_frames = SubResource("SpriteFrames_gi0np")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clfft6n70voan"]
 
-[ext_resource type="Script" uid="uid://blja7jdgyprcl" path="res://scripts/tiles/steel_block.gd" id="1_6wj14"]
+[ext_resource type="Script" uid="uid://blja7jdgyprcl" path="res://scripts/block/steel_block.gd" id="1_6wj14"]
 [ext_resource type="Texture2D" uid="uid://be1877cg70nb1" path="res://assets/tiles/structure/steel/steelblocknatural.png" id="1_vmukd"]
 [ext_resource type="Texture2D" uid="uid://bko0wwqk3bogd" path="res://assets/tiles/structure/steel/steelblockcritical.png" id="2_a4wq2"]
 [ext_resource type="Texture2D" uid="uid://bw02v3sdmn860" path="res://assets/tiles/structure/steel/steelblockhalf.png" id="4_jb8bt"]
@@ -43,7 +43,7 @@ script = ExtResource("1_6wj14")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653458812]
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_kvkvn")
-animation = &"halfHealth"
+animation = &"criticalHealth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180516912]
 position = Vector2(1, -2)

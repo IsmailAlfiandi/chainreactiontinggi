@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0sr7voehobx"
-path="res://.godot/imported/stonelogfull.png-7d8a89fc0ccf754a6fb8a9f8e2c35495.ctex"
+uid="uid://b8gldfojcrsgw"
+path="res://.godot/imported/stoneladder.png-5acc3fe07adc4d90592a1c92eeaa32ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/structure/wood/stonelogfull.png"
-dest_files=["res://.godot/imported/stonelogfull.png-7d8a89fc0ccf754a6fb8a9f8e2c35495.ctex"]
+source_file="res://assets/tiles/structure/stone/stoneladder.png"
+dest_files=["res://.godot/imported/stoneladder.png-5acc3fe07adc4d90592a1c92eeaa32ef.ctex"]
 
 [params]
 

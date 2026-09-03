@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://02p7fleqkbpe"]
+
+[ext_resource type="Script" uid="uid://blja7jdgyprcl" path="res://scripts/block/steel_block.gd" id="1_iqemv"]
+[ext_resource type="Texture2D" uid="uid://bwc4cr0p5arkv" path="res://assets/tiles/structure/steel/ironladder.png" id="2_wxaex"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wxaex")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="steelStairs" type="RigidBody2D" unique_id=746125302]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_iqemv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=395341654]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=325787294]
+polygon = PackedVector2Array(1, -1, -49, -51, -49, 49, 51, 49)
