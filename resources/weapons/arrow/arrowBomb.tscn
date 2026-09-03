@@ -32,7 +32,7 @@ a = Vector2(-1, 1)
 b = Vector2(67, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
-radius = 340.05295
+radius = 418.0299
 
 [node name="BombArrow" type="RigidBody2D" unique_id=1550399353 groups=["arrow"]]
 collision_layer = 2
@@ -56,7 +56,7 @@ shape = SubResource("SegmentShape2D_kvkvn")
 
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=1922393022]
 position = Vector2(70, 42)
-collision_layer = 0
+collision_layer = 255
 collision_mask = 255
 monitorable = false
 

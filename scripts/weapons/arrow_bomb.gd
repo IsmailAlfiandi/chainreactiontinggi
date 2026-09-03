@@ -3,9 +3,9 @@ class_name BombArrow
 
 @export var lifetime: float = 8.0
 @export var stop_speed: float = 40.0
-@export var explosion_radius: float = 130.0
+@export var explosion_radius: float = 300.0
 @export var explosion_force: float = 1000.0
-@export var explosion_damage: float = 90.0
+@export var explosion_damage: float = 180.0
 @export var explosion_linger_time: float = 1.4
 @export var stick_depth: float = 16.0
 @export var explode_window: float = 3.0          # ← time window to explode (seconds)

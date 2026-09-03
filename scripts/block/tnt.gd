@@ -7,7 +7,7 @@ enum MaterialType { WOOD, STONE, STEEL, TNT }
 @export var push_speed: float = 300.0
 @export var destroy_speed: float = 700.0
 @export var explosion_force: float = 800.0
-@export var explosion_radius: float = 150.0
+@export var explosion_radius: float = 300.0
 @export var push_force_multiplier: float = 1.0
 
 # === Health ===
@@ -101,47 +101,79 @@ func update_sprite() -> void:
 	pass
 
 func destroy_block() -> void:
-	# Prevent multiple explosions
 	if not is_instance_valid(self):
 		return
-	
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsShapeQueryParameters2D.new()
-	
-	var shape = CircleShape2D.new()
-	shape.radius = explosion_radius
-	query.shape = shape
-	query.transform = Transform2D(0, global_position)
-	query.collide_with_bodies = true
-	query.collision_mask = 0xFFFFFFFF
-	
-	var results = space_state.intersect_shape(query, 64)
-	
-	for result in results:
-		var body = result.collider
-		if body == self:
+
+	# Clean up stuck arrows
+	for arrow in get_tree().get_nodes_in_group("arrow"):
+		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
+			arrow.queue_free()
+
+	var explosion_area = get_node_or_null("Area2D")
+	var bodies: Array = []
+
+	if explosion_area:
+		explosion_area.monitoring = true
+		bodies = explosion_area.get_overlapping_bodies()
+
+	if bodies.is_empty():
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsShapeQueryParameters2D.new()
+		var shape = CircleShape2D.new()
+		shape.radius = explosion_radius
+		query.shape = shape
+		query.transform = global_transform
+		query.collide_with_bodies = true
+		query.collide_with_areas = false
+		query.collision_mask = 0xFFFFFFFF
+		query.exclude = [self.get_rid()]
+
+		var results = space_state.intersect_shape(query, 32)
+
+		for result in results:
+			bodies.append(result.collider)
+
+	# --- Apply effects ---
+	for body in bodies:
+		if body == self or not is_instance_valid(body):
 			continue
-		
+
+		var direction = (body.global_position - global_position).normalized()
+		var distance = global_position.distance_to(body.global_position)
+		var falloff = 1.0 - clamp(distance / explosion_radius, 0.0, 1.0)
+
+		if falloff <= 0.05:
+			continue
+
+		# PUSH
 		if body is RigidBody2D:
 			body.sleeping = false
 			body.freeze = false
-		
-		if body is RigidBody2D:
-			var direction = (body.global_position - global_position).normalized()
-			var distance = global_position.distance_to(body.global_position)
-			
-			var force_strength = explosion_force * (1.0 - clamp(distance / explosion_radius, 0.0, 1.0))
-			force_strength = max(force_strength, explosion_force * 0.4)
-			
-			body.apply_central_impulse(direction * force_strength * 4.0)
-		
-		# Chain reaction for other TNT
+			body.apply_central_impulse(direction * explosion_force * falloff)
+
+		# DAMAGE
+		var explosion_damage = 750.0
+
 		if body is TNTBlock:
-			body.destroy_block()
-		elif body.has_method("destroy_block"):
-			body.destroy_block()
-	
-	# Play explosion animation then remove
+			body.call_deferred("destroy_block")
+		elif body.has_method("take_explosion_damage"):
+			body.take_explosion_damage(explosion_damage * falloff)
+		elif body.has_method("_apply_damage"):
+			body._apply_damage(explosion_damage * falloff)
+		elif body.get("current_health") != null:
+			body.current_health -= explosion_damage * falloff
+			body.current_health = max(body.current_health, 0.0)
+
+			if body.has_method("update_sprite"):
+				body.update_sprite()
+
+			if body.current_health <= 0.0:
+				if body.has_method("destroy_block"):
+					body.call_deferred("destroy_block")
+				else:
+					body.queue_free()
+
+	# Play animation and remove
 	anim.play("explode")
 	await anim.animation_finished
 	queue_free()

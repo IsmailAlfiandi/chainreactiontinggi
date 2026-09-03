@@ -81,7 +81,7 @@ func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> void:
 		destroy_block()
 
 func update_sprite() -> void:
-	if not AnimatedSprite2D:
+	if not anim:
 		return
 
 	var health_percent = current_health / max_health
@@ -95,8 +95,8 @@ func update_sprite() -> void:
 
 
 func destroy_block() -> void:
-	# Optional: play particles / sound
-	# $DestroyParticles.emitting = true
-	# $DestroySound.play()
-	
+	for arrow in get_tree().get_nodes_in_group("arrow"):
+		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
+			arrow.queue_free()
+
 	queue_free()
