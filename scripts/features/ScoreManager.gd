@@ -1,0 +1,31 @@
+extends Node
+
+var score: int = 0
+var enemies_remaining: int = 0
+var game_won: bool = false
+
+signal score_changed(new_score)
+signal all_enemies_killed
+
+
+func add_score(points: int) -> void:
+	score += points
+	score_changed.emit(score)
+
+
+func register_enemy() -> void:
+	enemies_remaining += 1
+
+
+func enemy_killed() -> void:
+	if game_won:
+		return
+
+	enemies_remaining -= 1
+
+	print("Enemies remaining: ", enemies_remaining)
+
+	if enemies_remaining <= 0:
+		enemies_remaining = 0
+		game_won = true
+		all_enemies_killed.emit()

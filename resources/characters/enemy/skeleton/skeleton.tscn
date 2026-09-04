@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dlsifx0f2sbui"]
+
+[ext_resource type="Script" uid="uid://dt6wafgi2oi0" path="res://scripts/characters/enemy/ghost/ghost_2.gd" id="1_nl1k5"]
+[ext_resource type="Texture2D" uid="uid://dekpjiuc1fenn" path="res://assets/character/enemy/skeleton/1000418443.png" id="1_xan2h"]
+[ext_resource type="Texture2D" uid="uid://dsb0728kbjis7" path="res://assets/character/enemy/skeleton/1000418444.png" id="2_nl1k5"]
+[ext_resource type="Texture2D" uid="uid://b4qce75ekhni2" path="res://assets/character/enemy/skeleton/1000418445.png" id="3_nxkh5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xan2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nl1k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nxkh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nl1k5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nl21"]
+radius = 17.0
+height = 76.0
+
+[node name="skeleton" type="CharacterBody2D" unique_id=406267899]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_nl1k5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1824330422]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"idle"
+frame = 3
+frame_progress = 0.47172657
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711877829]
+position = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_1nl21")

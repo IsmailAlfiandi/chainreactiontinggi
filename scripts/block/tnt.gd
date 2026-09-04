@@ -175,5 +175,6 @@ func destroy_block() -> void:
 
 	# Play animation and remove
 	anim.play("explode")
+	ScoreManager.add_score(10)
 	await anim.animation_finished
 	queue_free()

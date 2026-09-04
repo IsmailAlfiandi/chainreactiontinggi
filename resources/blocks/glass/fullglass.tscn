@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://3xc1mqt8ybsa"]
+
+[ext_resource type="Script" uid="uid://bcjn6g5y2xcc1" path="res://scripts/block/glassblock.gd" id="1_2eicg"]
+[ext_resource type="Texture2D" uid="uid://bayjo0o6maq1o" path="res://assets/tiles/structure/glass/fullglass.png" id="2_2eicg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2eicg")
+}],
+"loop": 1,
+"name": &"fullHealth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(100, 100)
+
+[node name="fullglass" type="RigidBody2D" unique_id=1933453284]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_2eicg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1372858160]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"fullHealth"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1382658718]
+shape = SubResource("RectangleShape2D_1nl21")

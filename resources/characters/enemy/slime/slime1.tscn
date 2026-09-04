@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cwd13p3ei37l6"]
+
+[ext_resource type="Script" uid="uid://dt6wafgi2oi0" path="res://scripts/characters/enemy/ghost/ghost_2.gd" id="1_12lpl"]
+[ext_resource type="Texture2D" uid="uid://b5jqy1365g804" path="res://assets/character/enemy/slime/1000414533.png" id="2_7w8vc"]
+[ext_resource type="Texture2D" uid="uid://blp6nv6cemnst" path="res://assets/character/enemy/slime/1000414545.png" id="3_cit2o"]
+[ext_resource type="Texture2D" uid="uid://d2exngyuo2hrw" path="res://assets/character/enemy/slime/1000414546.png" id="4_6u8n2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7w8vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cit2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6u8n2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cit2o")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(76, 35)
+
+[node name="slime" type="CharacterBody2D" unique_id=197834694]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_12lpl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1159055643]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"idle"
+frame_progress = 0.9365707
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=90778576]
+position = Vector2(-4, 15.5)
+shape = SubResource("RectangleShape2D_1nl21")

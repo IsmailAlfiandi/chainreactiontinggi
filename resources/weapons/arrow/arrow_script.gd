@@ -7,11 +7,10 @@ var stuck_rotation_offset: float = 0.0
 
 @export var lifetime: float = 8.0
 @export var stop_speed: float = 40.0
-@export var camera_return_delay: float = 1.2
+@export var camera_return_delay: float = 3.0
 @export var stick_depth: float = 14.0
 
 var has_landed := false
-var camera_returned := false
 var last_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -50,18 +49,27 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("arrow"):
 		return
 
-	if body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
-		_stick_to_body(body)
-		body.take_hit(last_velocity, self)
-		_start_return_sequence()
+	# Blocks
+	if body is GlassBlock or body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
+		var block_destroyed: bool = body.take_hit(last_velocity, self)
+
+		if block_destroyed:
+			# Destroyed block -> pierce through
+			_pierce_block()
+		else:
+			# Block survives -> stick
+			_stick_to_body(body)
+			_start_return_sequence()
+
 		return
 
-	if body is Ghost:
+	# Enemies -> pierce through
+	if body is Ghost or body is Ghost2 or body is bat:
 		body.take_hit(last_velocity, self)
-		_start_return_sequence()
 		return
 
-	# Everything else → just freeze in place
+	# Everything else is a solid world object
+	# Example: TileMap boundary / walls
 	has_landed = true
 	_on_landed()
 
@@ -123,6 +131,16 @@ func _finish_stick(body: Node) -> void:
 	# Optional: make freeze mode explicit (STATIC is usually best for stuck projectiles)
 	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
 
+func _pierce_block() -> void:
+	var speed: float = linear_velocity.length()
+	var direction: Vector2 = linear_velocity.normalized()
+
+	var pierce_speed_multiplier: float = 0.8
+
+	linear_velocity = direction * speed * pierce_speed_multiplier
+
+	global_position += direction * 10.0
+	
 func _on_landed() -> void:
 	_freeze_arrow()
 	_start_return_sequence()
@@ -137,21 +155,37 @@ func _freeze_arrow() -> void:
 	var col := get_node_or_null("CollisionShape2D")
 	if col:
 		col.set_deferred("disabled", true)
+		
+func release_from_target() -> void:
+	if not is_instance_valid(self):
+		return
+
+	# Stop following the destroyed block
+	stuck_to = null
+	stuck_offset = Vector2.ZERO
+	stuck_rotation_offset = 0.0
+
+	# Allow physics again
+	has_landed = false
+	freeze = false
+	lock_rotation = false
+	contact_monitor = true
+
+	var col := get_node_or_null("CollisionShape2D")
+	if col:
+		col.set_deferred("disabled", false)
+
+	# Let the arrow fall naturally
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
 
 func _start_return_sequence() -> void:
-	if camera_returned:
-		return
-	camera_returned = true
+	var camera = get_tree().get_first_node_in_group("camera")
 
-	await get_tree().create_timer(camera_return_delay).timeout
-
-	return_camera_to_player()
+	if camera and camera.has_method("delay_return_to_player"):
+		camera.delay_return_to_player(camera_return_delay)
 
 	var player = get_tree().get_first_node_in_group("player")
+
 	if player and player.has_method("after_hit"):
 		player.after_hit()
-
-func return_camera_to_player() -> void:
-	var camera = get_tree().get_first_node_in_group("camera")
-	if camera and camera.has_method("return_to_player"):
-		camera.return_to_player()

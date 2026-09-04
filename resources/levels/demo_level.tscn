@@ -1,17 +1,24 @@
 [gd_scene format=3 uid="uid://cw02ih1p85wyg"]
 
+[ext_resource type="Script" uid="uid://b8hd5vamihvdt" path="res://resources/levels/level_script.gd" id="1_3gunp"]
 [ext_resource type="Texture2D" uid="uid://b30ml7ei8848b" path="res://assets/backgrounds/bg1.jpg" id="1_vvnjs"]
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/blocks/misc/default_tileset.tres" id="2_x1oef"]
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
 [ext_resource type="PackedScene" uid="uid://c1xsf57846kaq" path="res://resources/characters/enemy/ghost/ghost.tscn" id="6_vjnnd"]
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="7_0ag0w"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="8_ld5m2"]
 [ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/blocks/wood/woodBlock.tscn" id="9_051bu"]
 [ext_resource type="PackedScene" uid="uid://bte172j4snfg1" path="res://resources/blocks/wood/wood_log.tscn" id="10_okq6g"]
 [ext_resource type="PackedScene" uid="uid://cw23r7xv61wbu" path="res://resources/characters/enemy/slime/slime.tscn" id="10_x1oef"]
 [ext_resource type="PackedScene" uid="uid://cs2y3bx4m6c1s" path="res://resources/blocks/wood/wood_stairs.tscn" id="11_qpytn"]
+=======
+[ext_resource type="PackedScene" uid="uid://dh3quui24fy45" path="res://resources/blocks/stone/stoneBlock.tscn" id="8_3gunp"]
+[ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="8_ld5m2"]
+>>>>>>> 285acc2285cf0c01a9aa01d4f57e9b7317e90c3b
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
+script = ExtResource("1_3gunp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=392363179]
 position = Vector2(1349, -240)
@@ -33,6 +40,7 @@ position = Vector2(2213, 125)
 position = Vector2(1822, 375)
 
 [node name="idle_point2" parent="." unique_id=235442717 instance=ExtResource("7_0ag0w")]
+<<<<<<< HEAD
 position = Vector2(2055, 310)
 
 [node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("8_ld5m2")]
@@ -69,3 +77,12 @@ rotation = 4.712389
 [node name="CharacterBody2D3" parent="." unique_id=1653129241 instance=ExtResource("10_x1oef")]
 position = Vector2(1909, 65)
 scale = Vector2(0.5, 0.5)
+=======
+position = Vector2(2537, 362)
+
+[node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("8_ld5m2")]
+position = Vector2(922, 393)
+
+[node name="stoneBlock" parent="." unique_id=1584937468 instance=ExtResource("8_3gunp")]
+position = Vector2(923, 285)
+>>>>>>> 285acc2285cf0c01a9aa01d4f57e9b7317e90c3b
