@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs5wgy501s7ig" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://ektqjbcxxq78" path="res://IMG-20260903-WA0054.jpg" id="2_7vrkn"]
+[ext_resource type="AudioStream" uid="uid://dwhcovks6d4b0" path="res://assets/Sound/Backsound.wav" id="3_fu7sn"]
 
 [node name="MainMenu" type="Control" unique_id=775565205]
 layout_mode = 3
@@ -58,3 +59,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "QUIT
 "
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=1528295116]
+stream = ExtResource("3_fu7sn")
+autoplay = true

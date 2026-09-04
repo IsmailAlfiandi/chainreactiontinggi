@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="7_poq4g"]
 [ext_resource type="PackedScene" uid="uid://bte172j4snfg1" path="res://resources/blocks/wood/wood_log.tscn" id="8_umkl8"]
 [ext_resource type="PackedScene" uid="uid://bhg15tqi2m8mg" path="res://resources/blocks/decorations/bushes.tscn" id="9_8fwox"]
-[ext_resource type="Texture2D" uid="uid://dxu77kqmvvqsd" path="res://assets/tiles/decorations/pillar/1000415764.png" id="11_ct77g"]
+[ext_resource type="PackedScene" uid="uid://b25lbe84ho2q6" path="res://resources/blocks/decorations/pillar.tscn" id="10_51no8"]
+[ext_resource type="Script" uid="uid://b6m2i1a08k4ay" path="res://resources/levels/pause_ui.gd" id="11_nasyg"]
+[ext_resource type="AudioStream" uid="uid://duaq8tuhqlpxr" path="res://assets/Sound/backsoundgame.wav" id="12_ct77g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -36,7 +38,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458756, 1, 65536, 458755, 1, 65536, 458754, 1, 65536, 458753, 1, 65536, 458752, 1, 65536, 458757, 1, 65536, 524293, 2, 65536, 589829, 2, 65536, 524292, 2, 65536, 589828, 2, 65536, 589827, 2, 65536, 524291, 2, 65536, 589826, 2, 65536, 589825, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524288, 2, 65536, 589824, 2, 65536, 393216, 917504, 6, 458758, 1, 65536, 458759, 1, 65536, 458760, 1, 65536, 458761, 1, 65536, 458762, 1, 65536, 458763, 1, 65536, 458764, 1, 65536, 458765, 1, 65536, 458766, 1, 65536, 458767, 1, 65536, 458768, 1, 65536, 458769, 1, 65536, 458770, 1, 65536, 458771, 1, 65536, 458772, 1, 65536, 458773, 1, 65536, 458774, 1, 65536, 458775, 1, 65536, 458776, 1, 65536, 458777, 1, 65536, 458778, 1, 65536, 458779, 1, 65536, 458780, 1, 65536, 458781, 1, 65536, 458782, 1, 65536, 458783, 1, 65536, 524294, 2, 65536, 524295, 2, 65536, 524296, 2, 65536, 524297, 2, 65536, 524298, 2, 65536, 589830, 2, 65536, 589831, 2, 65536, 589832, 2, 65536, 589833, 2, 65536, 589834, 2, 65536, 589835, 2, 65536, 589836, 2, 65536, 589837, 2, 65536, 589838, 2, 65536, 589839, 2, 65536, 589840, 2, 65536, 589841, 2, 65536, 524305, 2, 65536, 524304, 2, 65536, 524303, 2, 65536, 524302, 2, 65536, 524301, 2, 65536, 524300, 2, 65536, 524299, 2, 65536, 458784, 1, 65536, 458785, 1, 65536, 458786, 1, 65536, 458787, 1, 65536, 458788, 1, 65536, 458789, 1, 65536, 458790, 1, 65536, 458791, 1, 65536, 458792, 1, 65536, 458793, 1, 65536, 458751, 2, 65536, 393215, 2, 65536, 327679, 2, 65536, 262143, 2, 65536, 196607, 2, 65536, 131071, 2, 65536, 65535, 2, 65536, -1, 2, 65536, -65537, 2, 65536, -131073, 2, 65536, -196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, -393217, 2, 65536, -458753, 2, 65536, -524289, 2, 65536, -589825, 2, 65536, -655361, 2, 65536, -720897, 2, 65536, -786433, 2, 65536, -851969, 2, 65536, -917505, 2, 65536, 393258, 2, 65536, 327722, 2, 65536, 262186, 2, 65536, 196650, 2, 65536, 131114, 2, 65536, 65578, 2, 65536, 42, 2, 65536, -65494, 2, 65536, -131030, 2, 65536, -196566, 2, 65536, -262102, 2, 65536, -327638, 2, 65536, -393174, 2, 65536, -458710, 2, 65536, -524246, 2, 65536, -589782, 2, 65536, -655318, 2, 65536, -720854, 2, 65536, -786390, 2, 65536, -851926, 2, 65536, -917462, 2, 65536, -982998, 2, 65536, 524306, 2, 65536, 524307, 2, 65536, 524308, 2, 65536, 524309, 2, 65536, 524310, 2, 65536, 524311, 2, 65536, 524312, 2, 65536, 524313, 2, 65536, 524314, 2, 65536, 524315, 2, 65536, 524316, 2, 65536, 524317, 2, 65536, 524318, 2, 65536, 524319, 2, 65536, 524320, 2, 65536, 524321, 2, 65536, 524322, 2, 65536, 524323, 2, 65536, 524329, 2, 65536, 524328, 2, 65536, 524327, 2, 65536, 524326, 2, 65536, 524325, 2, 65536, 524324, 2, 65536, 458794, 2, 65536, 524287, 2, 65536, 589823, 2, 65536, 655359, 2, 65536, 720895, 2, 65536, 655360, 2, 65536, 655361, 2, 65536, 655362, 2, 65536, 655365, 2, 65536, 655364, 2, 65536, 655363, 2, 65536, 655366, 2, 65536, 655367, 2, 65536, 655368, 2, 65536, 655369, 2, 65536, 655370, 2, 65536, 655371, 2, 65536, 655372, 2, 65536, 655373, 2, 65536, 655374, 2, 65536, 655375, 2, 65536, 655376, 2, 65536, 655377, 2, 65536, 655378, 2, 65536, 589842, 2, 65536, 589843, 2, 65536, 589844, 2, 65536, 589845, 2, 65536, 589846, 2, 65536, 589847, 2, 65536, 589848, 2, 65536, 589849, 2, 65536, 589850, 2, 65536, 589851, 2, 65536, 589852, 2, 65536, 589853, 2, 65536, 589854, 2, 65536, 589855, 2, 65536, 589856, 2, 65536, 589857, 2, 65536, 589858, 2, 65536, 589859, 2, 65536, 589860, 2, 65536, 589865, 2, 65536, 524330, 2, 65536, 589866, 2, 65536, 655402, 2, 65536, 655401, 2, 65536, 655400, 2, 65536, 589864, 2, 65536, 589863, 2, 65536, 589862, 2, 65536, 589861, 2, 65536, 655398, 2, 65536, 655399, 2, 65536, 655397, 2, 65536, 655396, 2, 65536, 655395, 2, 65536, 655394, 2, 65536, 655393, 2, 65536, 655392, 2, 65536, 655391, 2, 65536, 655390, 2, 65536, 655389, 2, 65536, 655388, 2, 65536, 655387, 2, 65536, 655386, 2, 65536, 655385, 2, 65536, 655384, 2, 65536, 655383, 2, 65536, 655382, 2, 65536, 655381, 2, 65536, 655380, 2, 65536, 655379, 2, 65536)
 
 [node name="CharacterBody2D" parent="." unique_id=233385622 instance=ExtResource("5_1hmv2")]
-position = Vector2(349, 354)
+position = Vector2(277, 374)
 
 [node name="idle_point" parent="." unique_id=713395278 instance=ExtResource("7_poq4g")]
 position = Vector2(1822, 375)
@@ -45,79 +47,129 @@ position = Vector2(1822, 375)
 position = Vector2(2055, 310)
 
 [node name="woodBlock" parent="." unique_id=1278837116 instance=ExtResource("5_51no8")]
-position = Vector2(1958, 394)
+position = Vector2(1985, 388)
 
 [node name="woodBlock2" parent="." unique_id=881422331 instance=ExtResource("5_51no8")]
-position = Vector2(1546, 383)
+position = Vector2(1530, 393)
 
 [node name="woodBlock3" parent="." unique_id=2104094652 instance=ExtResource("5_51no8")]
-position = Vector2(1450, 382)
+position = Vector2(1420, 398)
 
 [node name="woodBlock4" parent="." unique_id=1973788041 instance=ExtResource("5_51no8")]
-position = Vector2(1837, 75)
+position = Vector2(1869, 77)
 
 [node name="woodBlock5" parent="." unique_id=927700060 instance=ExtResource("5_51no8")]
-position = Vector2(1647, 384)
+position = Vector2(1643, 393)
 
 [node name="woodBlock6" parent="." unique_id=1000129459 instance=ExtResource("5_51no8")]
-position = Vector2(1386, 179)
+position = Vector2(1387, 187)
 
 [node name="woodBlock7" parent="." unique_id=1151795372 instance=ExtResource("5_51no8")]
 position = Vector2(1751, 386)
 
 [node name="woodBlock8" parent="." unique_id=79013015 instance=ExtResource("5_51no8")]
-position = Vector2(1598, 173)
+position = Vector2(1600, 186)
 
 [node name="woodBlock9" parent="." unique_id=1346524384 instance=ExtResource("5_51no8")]
-position = Vector2(1348, 384)
+position = Vector2(1319, 395)
 
 [node name="woodStairs" parent="." unique_id=338967184 instance=ExtResource("6_nasyg")]
-position = Vector2(1489, 81.99994)
-rotation = 2.3387413
+position = Vector2(1390, 102.00003)
+rotation = 2.3561945
 
 [node name="woodBlock10" parent="." unique_id=1360760540 instance=ExtResource("5_51no8")]
-position = Vector2(1854, 388)
+position = Vector2(1868, 396)
 
 [node name="woodBlock11" parent="." unique_id=634121974 instance=ExtResource("5_51no8")]
-position = Vector2(1600, 281)
+position = Vector2(1601, 289)
 
 [node name="woodBlock17" parent="." unique_id=94864399 instance=ExtResource("5_51no8")]
-position = Vector2(1381, 285)
+position = Vector2(1385, 290)
 
 [node name="woodBlock12" parent="." unique_id=131442515 instance=ExtResource("5_51no8")]
-position = Vector2(1847, 291)
+position = Vector2(1873, 293)
 
 [node name="woodBlock13" parent="." unique_id=1729075853 instance=ExtResource("5_51no8")]
-position = Vector2(1843, 179)
+position = Vector2(1873, 188)
 
 [node name="woodStairs2" parent="." unique_id=1176164562 instance=ExtResource("6_nasyg")]
-position = Vector2(1837, 11.999939)
+position = Vector2(1876, 13.999939)
 rotation = 2.3439772
 
 [node name="woodBlock14" parent="." unique_id=1982503772 instance=ExtResource("5_51no8")]
-position = Vector2(1249, 387)
+position = Vector2(1205, 393)
 
 [node name="woodBlock15" parent="." unique_id=1050165233 instance=ExtResource("5_51no8")]
-position = Vector2(1487, 279)
+position = Vector2(1493, 291)
 
 [node name="woodBlock16" parent="." unique_id=1179491234 instance=ExtResource("5_51no8")]
-position = Vector2(1153, 386)
+position = Vector2(1093, 395)
 
 [node name="slime" parent="." unique_id=197834694 instance=ExtResource("7_ct77g")]
-position = Vector2(1493, 191)
+position = Vector2(1503, 188)
 
 [node name="slime2" parent="." unique_id=2015203953 instance=ExtResource("7_ct77g")]
-position = Vector2(1722, 297)
+position = Vector2(1723, 289)
 
 [node name="woodLog" parent="." unique_id=23274698 instance=ExtResource("8_umkl8")]
-position = Vector2(1560, 106)
+position = Vector2(1594, 124)
 
 [node name="woodLog2" parent="." unique_id=1484616509 instance=ExtResource("8_umkl8")]
-position = Vector2(1423, 113)
+position = Vector2(1389, 123)
 
 [node name="Pot" parent="." unique_id=517660756 instance=ExtResource("9_8fwox")]
 position = Vector2(527, 415)
 
-[node name="1000415764" type="Sprite2D" parent="." unique_id=121182114]
-position = Vector2(734, 267)
-texture = ExtResource("11_ct77g")
+[node name="pillar" parent="." unique_id=280683652 instance=ExtResource("10_51no8")]
+position = Vector2(619, 359)
+
+[node name="woodStairs3" parent="." unique_id=887643636 instance=ExtResource("6_nasyg")]
+position = Vector2(1580, 103)
+rotation = 2.3561945
+
+[node name="woodLog3" parent="." unique_id=1355719885 instance=ExtResource("8_umkl8")]
+position = Vector2(1483, 59)
+
+[node name="PauseUI" type="CanvasLayer" parent="." unique_id=2103868]
+script = ExtResource("11_nasyg")
+
+[node name="PauseButton" type="Button" parent="PauseUI" unique_id=1758836509]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 79.0
+offset_bottom = 51.0
+text = "PAUSE"
+
+[node name="PauseMenu" type="Panel" parent="PauseUI" unique_id=1180941983]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -113.0
+offset_right = -225.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PauseUI/PauseMenu" unique_id=711766452]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -28.0
+offset_right = 94.0
+offset_bottom = 35.0
+text = "RESUME"
+
+[node name="MainMenuButton" type="Button" parent="PauseUI/PauseMenu" unique_id=1631896992]
+layout_mode = 0
+offset_left = -98.0
+offset_top = 54.0
+offset_right = 110.0
+offset_bottom = 108.0
+text = "MAIN MENU
+"
+
+[node name="EffectHit" type="AudioStreamPlayer2D" parent="." unique_id=1873974111]
+stream = ExtResource("12_ct77g")
+autoplay = true

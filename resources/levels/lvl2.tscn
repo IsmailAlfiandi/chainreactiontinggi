@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="5_m3274"]
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="6_o0nlq"]
 [ext_resource type="PackedScene" uid="uid://b2ifh7v2rbrrk" path="res://resources/blocks/steel/steel_log.tscn" id="10_bxjj3"]
-[ext_resource type="Texture2D" uid="uid://dxu77kqmvvqsd" path="res://assets/tiles/decorations/pillar/1000415764.png" id="11_mapk4"]
 [ext_resource type="PackedScene" uid="uid://b4ue5wr2luyo5" path="res://resources/blocks/stone/stone_stairs.tscn" id="11_qfofm"]
 [ext_resource type="Texture2D" uid="uid://dbi87f3mvjens" path="res://assets/tiles/decorations/pillar/1000415769.png" id="12_m3274"]
 [ext_resource type="PackedScene" uid="uid://02p7fleqkbpe" path="res://resources/blocks/steel/steel_stairs.tscn" id="12_mapk4"]
 [ext_resource type="PackedScene" uid="uid://dh3quui24fy45" path="res://resources/blocks/stone/stoneBlock.tscn" id="13_m3274"]
 [ext_resource type="PackedScene" uid="uid://ciy88xei1mb64" path="res://resources/characters/enemy/bat/bat.tscn" id="13_o0nlq"]
 [ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/blocks/wood/woodBlock.tscn" id="14_m3274"]
+[ext_resource type="PackedScene" uid="uid://b25lbe84ho2q6" path="res://resources/blocks/decorations/pillar.tscn" id="14_o0nlq"]
 [ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="15_o0nlq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
@@ -118,10 +118,6 @@ rotation = 6.2831855
 [node name="stoneBlock2" parent="." unique_id=86951257 instance=ExtResource("13_m3274")]
 position = Vector2(1811, 298)
 
-[node name="1000415764" type="Sprite2D" parent="." unique_id=560356765]
-position = Vector2(775, 250)
-texture = ExtResource("11_mapk4")
-
 [node name="1000415769" type="Sprite2D" parent="." unique_id=1218841651]
 position = Vector2(1382, 421.99997)
 scale = Vector2(0.96484375, 0.6284181)
@@ -141,3 +137,6 @@ position = Vector2(2128, 269)
 
 [node name="woodBlock" parent="." unique_id=1278837116 instance=ExtResource("14_m3274")]
 position = Vector2(1811, 396)
+
+[node name="pillar" parent="." unique_id=280683652 instance=ExtResource("14_o0nlq")]
+position = Vector2(689, 357)

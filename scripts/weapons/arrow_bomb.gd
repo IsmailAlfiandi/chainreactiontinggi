@@ -108,6 +108,8 @@ func _on_body_entered(body: Node) -> void:
 		or body is SteelBlock
 		or body is TNTBlock
 	):
+		$EffectHit.play()
+		
 		var block_destroyed: bool = body.take_hit(
 			last_velocity,
 			self
