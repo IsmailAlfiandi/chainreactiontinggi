@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="4_symwr"]
 [ext_resource type="Texture2D" uid="uid://wmer4gq0ig7k" path="res://assets/character/player/progressbar/progressbar.png" id="7_r6o4l"]
 [ext_resource type="Texture2D" uid="uid://b10a0hqhcx2tb" path="res://assets/character/player/progressbar/fullprogressbar.png" id="8_8yyh3"]
-[ext_resource type="Script" uid="uid://bo6t6csujwwct" path="res://scripts/features/aim_projection.gd" id="9_8yyh3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
 animations = [{
@@ -50,7 +49,6 @@ position = Vector2(31, 20)
 texture = ExtResource("3_8gddl")
 
 [node name="moveState" type="Sprite2D" parent="State" unique_id=1850204095]
-visible = false
 texture = ExtResource("4_symwr")
 
 [node name="bulletSpawn" type="Marker2D" parent="State" unique_id=1699223040]
@@ -157,15 +155,6 @@ theme_override_font_sizes/font_size = 10
 toggle_mode = true
 button_mask = 3
 text = "2"
-
-[node name="AimProjection" type="Node2D" parent="." unique_id=1564234551]
-position = Vector2(52, 10)
-script = ExtResource("9_8yyh3")
-
-[node name="Line2D" type="Line2D" parent="AimProjection" unique_id=123444338]
-position = Vector2(0, 23)
-width = 4.0
-texture_mode = 1
 
 [connection signal="pressed" from="Control/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

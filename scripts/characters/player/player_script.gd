@@ -23,6 +23,8 @@ var block_shoot_until: float = 0.0
 @onready var arrow_spawn: Marker2D = $State/bulletSpawn
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var aim_ui: Control = $AimUI
+@onready var score_ui: Control = $camera/ScoreUI/scoreLabel
+@onready var aim_projection: Node2D = $AimProjection
 
 var arrow_scene = preload("res://resources/weapons/arrow/arrow.tscn")   # your projectile (RigidBody2D)
 var arrowBomb_scene = preload("res://resources/weapons/arrow/arrowBomb.tscn")
@@ -37,6 +39,9 @@ var is_facing_right: bool = true
 
 func _ready():
 	add_to_group("player")
+	aim_projection.position = arrow_spawn.position
+	ScoreManager.score_changed.connect(_on_score_changed)
+	score_ui.text = "Score: %d" % ScoreManager.score
 
 func _physics_process(delta: float):
 	if not is_on_floor():
@@ -98,7 +103,7 @@ func enter_aiming():
 
 func handle_aiming(delta: float):
 	var mouse_pos = get_global_mouse_position()
-	aim_direction = (mouse_pos - global_position).normalized()
+	aim_direction = (mouse_pos - arrow_spawn.global_position).normalized()
 	
 	# Decide facing
 	if aim_direction.x > 0.05:
@@ -125,12 +130,14 @@ func handle_aiming(delta: float):
 	current_power = clamp(distance * power_multiplier, min_power, max_power)
 	
 	aim_ui.show_aim(current_power, aim_direction.angle(), max_power)
+	aim_projection.show_trajectory(aim_direction, current_power)
 	
 	# Cancel
 	if Input.is_action_just_pressed("right_click"):
 		state = State.MOVE
 		bow_pivot.rotation = 0.0
 		aim_ui.hide_aim()
+		aim_projection.hide_trajectory()
 	
 	# Shoot
 	if Input.is_action_just_pressed("shoot") and can_shoot and current_arrow == null:
@@ -148,6 +155,8 @@ func handle_aiming(delta: float):
 func shoot():
 	var arrow: RigidBody2D = null
 	var power = current_power
+	
+	aim_projection.hide_trajectory()
 	
 	if arrow_type == 1:
 		arrow = arrow_scene.instantiate()
@@ -220,6 +229,9 @@ func _input(event: InputEvent) -> void:
 		block_shoot_until = Time.get_ticks_msec() + 150
 
 		get_viewport().set_input_as_handled()
+
+func _on_score_changed(new_score: int) -> void:
+	score_ui.text = "Score: %d" % new_score
 		
 func _on_button_pressed() -> void:
 	arrow_type = 1

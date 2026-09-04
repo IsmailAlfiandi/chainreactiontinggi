@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cw02ih1p85wyg"]
 
+[ext_resource type="Script" uid="uid://b8hd5vamihvdt" path="res://resources/levels/level_script.gd" id="1_3gunp"]
 [ext_resource type="Texture2D" uid="uid://b30ml7ei8848b" path="res://assets/backgrounds/bg1.jpg" id="1_vvnjs"]
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/blocks/misc/default_tileset.tres" id="2_x1oef"]
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ue5wr2luyo5" path="res://resources/blocks/stone/stone_stairs.tscn" id="10_x1oef"]
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
+script = ExtResource("1_3gunp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=392363179]
 position = Vector2(1349, -240)

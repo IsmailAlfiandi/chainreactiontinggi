@@ -98,5 +98,6 @@ func destroy_block() -> void:
 	for arrow in get_tree().get_nodes_in_group("arrow"):
 		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
 			arrow.queue_free()
-
+			
+	ScoreManager.add_score(10)
 	queue_free()

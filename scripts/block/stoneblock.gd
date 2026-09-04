@@ -99,4 +99,5 @@ func destroy_block() -> void:
 		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
 			arrow.queue_free()
 
+	ScoreManager.add_score(10)
 	queue_free()

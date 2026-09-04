@@ -7,6 +7,7 @@ var current_state: State = State.WALK
 @export var move_speed: float = 85.0
 @export var idle_time: float = 2.5
 @export var gravity: float = 980.0
+@export var score_value: float = 50.0
 
 var idle_timer: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
@@ -78,9 +79,10 @@ func die() -> void:
 		$DetectionArea.set_deferred("monitoring", false)
 		$DetectionArea.set_deferred("monitorable", false)
 	
-	# If you don't have death animation, just use this instead:
+	ScoreManager.add_score(score_value)
+	ScoreManager.enemy_killed()
 	queue_free()
-# Connect this from DetectionArea → area_entered
+
 func _on_area_entered(area: Area2D) -> void:
 	if current_state == State.WALK and area.is_in_group("idle_point"):
 		change_state(State.IDLE)
