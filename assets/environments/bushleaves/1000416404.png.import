@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn0dbofnvcdcq"
-path="res://.godot/imported/bushes.jpg-1c99afc33e3bdc3891885a99e1c3d009.ctex"
+uid="uid://bh0p6421puqgs"
+path="res://.godot/imported/1000416404.png-f5bc6902da6f0def08b15780faaaf48e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environments/bushleaves/bushes.jpg"
-dest_files=["res://.godot/imported/bushes.jpg-1c99afc33e3bdc3891885a99e1c3d009.ctex"]
+source_file="res://assets/environments/bushleaves/1000416404.png"
+dest_files=["res://.godot/imported/1000416404.png-f5bc6902da6f0def08b15780faaaf48e.ctex"]
 
 [params]
 

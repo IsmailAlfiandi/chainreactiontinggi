@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhg15tqi2m8mg"]
+
+[ext_resource type="Texture2D" uid="uid://y64hd1kmxeyc" path="res://assets/environments/bushleaves/bushes.png" id="1_uy7uu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvkvn"]
+size = Vector2(20, 4)
+
+[node name="bushes" type="StaticBody2D" unique_id=361804038]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=843058534]
+texture = ExtResource("1_uy7uu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=243183552]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_kvkvn")

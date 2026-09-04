@@ -6,9 +6,9 @@ enum MaterialType { WOOD, STONE, STEEL, TNT }
 
 @export var material_type: MaterialType = MaterialType.TNT
 @export var push_speed: float = 300.0
-@export var destroy_speed: float = 700.0
-@export var explosion_force: float = 800.0
-@export var explosion_radius: float = 1000.0
+@export var destroy_speed: float = 550.0
+@export var explosion_force: float = 10000.0
+@export var explosion_radius: float = 10000.0
 @export var push_force_multiplier: float = 1.0
 
 # === Health ===
@@ -212,6 +212,7 @@ func destroy_block() -> void:
 
 		var direction: Vector2 = offset.normalized()
 
+	# Explosion falloff
 		var falloff: float = 1.0 - clamp(
 			distance / explosion_radius,
 			0.0,
@@ -221,47 +222,24 @@ func destroy_block() -> void:
 		if falloff <= 0.05:
 			continue
 
-		# ------------------------------------------------------
-		# PUSH
-		# ------------------------------------------------------
-		if body is RigidBody2D:
-			body.sleeping = false
-			body.freeze = false
+	# ==========================================================
+	# DAMAGE
+	# ==========================================================
+		var explosion_damage: float = 550.0
+		var damage: float = explosion_damage * falloff
 
-			var explosion_impulse: Vector2 = (
-				direction * explosion_force * falloff
-			)
-
-			body.apply_central_impulse(explosion_impulse)
-
-		# ------------------------------------------------------
-		# DAMAGE
-		# ------------------------------------------------------
-		var explosion_damage: float = 750.0
-
+	# TNT chain reaction
 		if body is TNTBlock:
-			# Chain reaction
-			body.call_deferred("destroy_block")
+			body.take_explosion_damage(damage)
 
+	# Other blocks / enemies with explosion damage
 		elif body.has_method("take_explosion_damage"):
-			body.take_explosion_damage(
-				explosion_damage * falloff
-			)
+			body.take_explosion_damage(damage)
 
-		elif body.has_method("_apply_damage"):
-			body._apply_damage(
-				explosion_damage * falloff
-			)
-
+	# Generic health system
 		elif body.get("current_health") != null:
-			body.current_health -= (
-				explosion_damage * falloff
-			)
-
-			body.current_health = maxf(
-				body.current_health,
-				0.0
-			)
+			body.current_health -= damage
+			body.current_health = maxf(body.current_health, 0.0)
 
 			if body.has_method("update_sprite"):
 				body.update_sprite()
@@ -269,8 +247,33 @@ func destroy_block() -> void:
 			if body.current_health <= 0.0:
 				if body.has_method("destroy_block"):
 					body.call_deferred("destroy_block")
-				else:
-					body.queue_free()
+
+	# ==========================================================
+	# PUSH
+	# Only push objects that are still alive
+	# ==========================================================
+		if body is RigidBody2D:
+			var can_push := true
+
+	# For destructible blocks, only push if they survived
+			if body is GlassBlock \
+			or body is WoodBlock \
+			or body is StoneBlock \
+			or body is SteelBlock \
+			or body is TNTBlock:
+				can_push = body.current_health > 0.0
+
+			if can_push:
+				body.sleeping = false
+				body.freeze = false
+
+				var impulse: Vector2 = (
+					direction
+					* explosion_force
+					* falloff
+				)
+
+				body.apply_central_impulse(impulse)
 
 	anim.play("explode")
 	ScoreManager.add_score(10)

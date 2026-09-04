@@ -35,7 +35,7 @@ animations = [{
 size = Vector2(100, 99)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
-radius = 97.00516
+radius = 181.27603
 
 [node name="TNT" type="RigidBody2D" unique_id=1260058245]
 collision_layer = 3

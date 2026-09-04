@@ -32,7 +32,7 @@ a = Vector2(-1, 1)
 b = Vector2(67, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvkvn"]
-radius = 418.0299
+radius = 506.33
 
 [node name="BombArrow" type="RigidBody2D" unique_id=1550399353 groups=["arrow"]]
 collision_layer = 2

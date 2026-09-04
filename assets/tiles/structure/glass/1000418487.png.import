@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckks56duq8ogw"
-path="res://.godot/imported/bushes1.jpg-c8211e79a86882e656698f6878b13cbd.ctex"
+uid="uid://boihdih0ppgjk"
+path="res://.godot/imported/1000418487.png-6ce130ae72a7eb0d0d29cb52e862737c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environments/bushleaves/bushes1.jpg"
-dest_files=["res://.godot/imported/bushes1.jpg-c8211e79a86882e656698f6878b13cbd.ctex"]
+source_file="res://assets/tiles/structure/glass/1000418487.png"
+dest_files=["res://.godot/imported/1000418487.png-6ce130ae72a7eb0d0d29cb52e862737c.ctex"]
 
 [params]
 
