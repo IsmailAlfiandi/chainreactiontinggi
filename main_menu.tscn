@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://jer7sxhrl2cl"]
+
+[ext_resource type="Script" uid="uid://dc08gr6wn1vfd" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://cgtswcev35g7w" path="res://resources/backgroundlobby/IMG-20260903-WA0054.jpg" id="2_7vrkn"]
+
+[node name="MainMenu" type="Control" unique_id=775565205]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="Title" type="Label" parent="." unique_id=667047220]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Demolisher
+"
+
+[node name="Background" type="TextureRect" parent="." unique_id=1928185841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7vrkn")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=1258014428]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -69.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="ButtonContainer" unique_id=1117736073]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="ButtonContainer" unique_id=781041743]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SETTINGS
+"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer" unique_id=747653332]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "QUIT
+"
