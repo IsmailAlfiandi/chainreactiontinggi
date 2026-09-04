@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
-size = Vector2(76, 35)
+size = Vector2(102, 46)
 
 [node name="slime" type="CharacterBody2D" unique_id=197834694]
 collision_layer = 7
@@ -34,11 +34,11 @@ collision_mask = 7
 script = ExtResource("1_12lpl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1159055643]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_kvkvn")
 animation = &"idle"
 frame_progress = 0.9365707
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=90778576]
-position = Vector2(-4, 15.5)
+position = Vector2(-7, 21)
 shape = SubResource("RectangleShape2D_1nl21")

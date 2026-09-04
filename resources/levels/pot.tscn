@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://oootdnxvxjs5"]
+
+[ext_resource type="Texture2D" uid="uid://bo4wixkgsslmw" path="res://assets/tiles/decorations/pot/1000415766.png" id="1_hx7pb"]
+[ext_resource type="Script" uid="uid://brojx3vt78v36" path="res://scripts/block/pot.gd" id="1_mfde1"]
+[ext_resource type="Texture2D" uid="uid://cogfkoei1t4ju" path="res://assets/tiles/decorations/pot/1000415767.png" id="2_mfde1"]
+[ext_resource type="Texture2D" uid="uid://c4sq1uyk53ktu" path="res://assets/tiles/decorations/pot/1000415768.png" id="3_pu03l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hx7pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mfde1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pu03l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mfde1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(83, 95)
+
+[node name="Pot" type="StaticBody2D" unique_id=517660756]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_mfde1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=648065273]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+frame_progress = 0.8256663
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661281571]
+position = Vector2(3.5, -7.5)
+shape = SubResource("RectangleShape2D_yf5fn")

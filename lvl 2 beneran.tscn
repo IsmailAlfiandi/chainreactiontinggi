@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://2e67y78h2wg0"]
+
+[ext_resource type="PackedScene" uid="uid://efvkerjxd0tx" path="res://resources/levels/lvl2.tscn" id="1_mh773"]
+
+[node name="Node2D" unique_id=1690568784 instance=ExtResource("1_mh773")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1024101644]
+frame = 1
+frame_progress = 0.2845295

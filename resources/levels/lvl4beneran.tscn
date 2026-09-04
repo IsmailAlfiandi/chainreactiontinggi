@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://02p7fleqkbpe" path="res://resources/blocks/steel/steel_stairs.tscn" id="8_u8ek5"]
 [ext_resource type="PackedScene" uid="uid://dh3quui24fy45" path="res://resources/blocks/stone/stoneBlock.tscn" id="9_c25ux"]
 [ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="10_jykir"]
+[ext_resource type="PackedScene" uid="uid://cwd13p3ei37l6" path="res://resources/characters/enemy/slime/slime1.tscn" id="11_1tfra"]
+[ext_resource type="PackedScene" uid="uid://dlsifx0f2sbui" path="res://resources/characters/enemy/skeleton/skeleton.tscn" id="12_t7y7d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -33,11 +35,10 @@ frame_progress = 0.6247018
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1280247724]
 tile_set = ExtResource("2_0rwax")
-format = 2
 layer_0/tile_data = PackedInt32Array(458756, 1, 65536, 458755, 1, 65536, 458754, 1, 65536, 458753, 1, 65536, 458752, 1, 65536, 458757, 1, 65536, 524293, 2, 65536, 589829, 2, 65536, 524292, 2, 65536, 589828, 2, 65536, 589827, 2, 65536, 524291, 2, 65536, 589826, 2, 65536, 589825, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524288, 2, 65536, 589824, 2, 65536, 393216, 917504, 6, 458758, 1, 65536, 458759, 1, 65536, 458760, 1, 65536, 458761, 1, 65536, 458762, 1, 65536, 458763, 1, 65536, 458764, 1, 65536, 458765, 1, 65536, 458766, 1, 65536, 458767, 1, 65536, 458768, 1, 65536, 458769, 1, 65536, 458770, 1, 65536, 458771, 1, 65536, 458772, 1, 65536, 458773, 1, 65536, 458774, 1, 65536, 458775, 1, 65536, 458776, 1, 65536, 458777, 1, 65536, 458778, 1, 65536, 458779, 1, 65536, 458780, 1, 65536, 458781, 1, 65536, 458782, 1, 65536, 458783, 1, 65536, 524294, 2, 65536, 524295, 2, 65536, 524296, 2, 65536, 524297, 2, 65536, 524298, 2, 65536, 589830, 2, 65536, 589831, 2, 65536, 589832, 2, 65536, 589833, 2, 65536, 589834, 2, 65536, 589835, 2, 65536, 589836, 2, 65536, 589837, 2, 65536, 589838, 2, 65536, 589839, 2, 65536, 589840, 2, 65536, 589841, 2, 65536, 524305, 2, 65536, 524304, 2, 65536, 524303, 2, 65536, 524302, 2, 65536, 524301, 2, 65536, 524300, 2, 65536, 524299, 2, 65536, 458784, 1, 65536, 458785, 1, 65536, 458786, 1, 65536, 458787, 1, 65536, 458788, 1, 65536, 458789, 1, 65536, 458790, 1, 65536, 458791, 1, 65536, 458792, 1, 65536, 458793, 1, 65536, 458751, 2, 65536, 393215, 2, 65536, 327679, 2, 65536, 262143, 2, 65536, 196607, 2, 65536, 131071, 2, 65536, 65535, 2, 65536, -1, 2, 65536, -65537, 2, 65536, -131073, 2, 65536, -196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, -393217, 2, 65536, -458753, 2, 65536, -524289, 2, 65536, -589825, 2, 65536, -655361, 2, 65536, -720897, 2, 65536, -786433, 2, 65536, -851969, 2, 65536, -917505, 2, 65536, 393258, 2, 65536, 327722, 2, 65536, 262186, 2, 65536, 196650, 2, 65536, 131114, 2, 65536, 65578, 2, 65536, 42, 2, 65536, -65494, 2, 65536, -131030, 2, 65536, -196566, 2, 65536, -262102, 2, 65536, -327638, 2, 65536, -393174, 2, 65536, -458710, 2, 65536, -524246, 2, 65536, -589782, 2, 65536, -655318, 2, 65536, -720854, 2, 65536, -786390, 2, 65536, -851926, 2, 65536, -917462, 2, 65536, -982998, 2, 65536, 524306, 2, 65536, 524307, 2, 65536, 524308, 2, 65536, 524309, 2, 65536, 524310, 2, 65536, 524311, 2, 65536, 524312, 2, 65536, 524313, 2, 65536, 524314, 2, 65536, 524315, 2, 65536, 524316, 2, 65536, 524317, 2, 65536, 524318, 2, 65536, 524319, 2, 65536, 524320, 2, 65536, 524321, 2, 65536, 524322, 2, 65536, 524323, 2, 65536, 524329, 2, 65536, 524328, 2, 65536, 524327, 2, 65536, 524326, 2, 65536, 524325, 2, 65536, 524324, 2, 65536, 458794, 2, 65536, 524287, 2, 65536, 589823, 2, 65536, 655359, 2, 65536, 720895, 2, 65536, 655360, 2, 65536, 655361, 2, 65536, 655362, 2, 65536, 655365, 2, 65536, 655364, 2, 65536, 655363, 2, 65536, 655366, 2, 65536, 655367, 2, 65536, 655368, 2, 65536, 655369, 2, 65536, 655370, 2, 65536, 655371, 2, 65536, 655372, 2, 65536, 655373, 2, 65536, 655374, 2, 65536, 655375, 2, 65536, 655376, 2, 65536, 655377, 2, 65536, 655378, 2, 65536, 589842, 2, 65536, 589843, 2, 65536, 589844, 2, 65536, 589845, 2, 65536, 589846, 2, 65536, 589847, 2, 65536, 589848, 2, 65536, 589849, 2, 65536, 589850, 2, 65536, 589851, 2, 65536, 589852, 2, 65536, 589853, 2, 65536, 589854, 2, 65536, 589855, 2, 65536, 589856, 2, 65536, 589857, 2, 65536, 589858, 2, 65536, 589859, 2, 65536, 589860, 2, 65536, 589865, 2, 65536, 524330, 2, 65536, 589866, 2, 65536, 655402, 2, 65536, 655401, 2, 65536, 655400, 2, 65536, 589864, 2, 65536, 589863, 2, 65536, 589862, 2, 65536, 589861, 2, 65536, 655398, 2, 65536, 655399, 2, 65536, 655397, 2, 65536, 655396, 2, 65536, 655395, 2, 65536, 655394, 2, 65536, 655393, 2, 65536, 655392, 2, 65536, 655391, 2, 65536, 655390, 2, 65536, 655389, 2, 65536, 655388, 2, 65536, 655387, 2, 65536, 655386, 2, 65536, 655385, 2, 65536, 655384, 2, 65536, 655383, 2, 65536, 655382, 2, 65536, 655381, 2, 65536, 655380, 2, 65536, 655379, 2, 65536)
 
 [node name="CharacterBody2D" parent="." unique_id=233385622 instance=ExtResource("3_1tfra")]
-position = Vector2(132, 369)
+position = Vector2(338, 356)
 
 [node name="idle_point" parent="." unique_id=713395278 instance=ExtResource("4_t7y7d")]
 position = Vector2(1822, 375)
@@ -85,7 +86,7 @@ position = Vector2(1397, 286)
 rotation = 1.5707964
 
 [node name="stoneStairs" parent="." unique_id=1148623654 instance=ExtResource("7_mwgug")]
-position = Vector2(1163, -6.999939)
+position = Vector2(1167.0001, 16)
 rotation = 2.3561945
 
 [node name="stoneStairs7" parent="." unique_id=1451707226 instance=ExtResource("7_mwgug")]
@@ -93,11 +94,7 @@ position = Vector2(1997, 29)
 rotation = 2.3561945
 
 [node name="stoneStairs2" parent="." unique_id=1565473234 instance=ExtResource("7_mwgug")]
-position = Vector2(1528, -48)
-rotation = 4.712389
-
-[node name="stoneStairs6" parent="." unique_id=2072088043 instance=ExtResource("7_mwgug")]
-position = Vector2(1528, -48)
+position = Vector2(1525, -52)
 rotation = 4.712389
 
 [node name="steelBlock3" parent="." unique_id=1871266885 instance=ExtResource("5_i8y5s")]
@@ -112,7 +109,7 @@ position = Vector2(956, 380)
 rotation = 4.712389
 
 [node name="steelLog3" parent="." unique_id=1300930755 instance=ExtResource("6_wc8yf")]
-position = Vector2(1448, 16)
+position = Vector2(1450.0001, 17)
 rotation = 0.017453292
 
 [node name="steelLog8" parent="." unique_id=1936977556 instance=ExtResource("6_wc8yf")]
@@ -124,7 +121,7 @@ position = Vector2(1659, 15.000002)
 rotation = 0.017453292
 
 [node name="steelLog17" parent="." unique_id=44465704 instance=ExtResource("6_wc8yf")]
-position = Vector2(1767, 18)
+position = Vector2(1762, 15.999998)
 rotation = 0.017453292
 
 [node name="steelLog5" parent="." unique_id=417586069 instance=ExtResource("6_wc8yf")]
@@ -178,7 +175,7 @@ position = Vector2(1803, 82)
 rotation = 1.5707964
 
 [node name="steelLog10" parent="." unique_id=1477572411 instance=ExtResource("6_wc8yf")]
-position = Vector2(1713, 290)
+position = Vector2(1711, 287)
 rotation = 1.5707964
 
 [node name="steelLog15" parent="." unique_id=2094734112 instance=ExtResource("6_wc8yf")]
@@ -202,17 +199,27 @@ position = Vector2(1873, 384)
 rotation = 6.2831855
 
 [node name="stoneStairs5" parent="." unique_id=1480231383 instance=ExtResource("7_mwgug")]
-position = Vector2(1629, -47)
+position = Vector2(1625, -52)
 rotation = 6.2831855
 
 [node name="stoneBlock2" parent="." unique_id=86951257 instance=ExtResource("9_c25ux")]
 position = Vector2(1465, 384)
 
 [node name="TNT" parent="." unique_id=1260058245 instance=ExtResource("10_jykir")]
-position = Vector2(1117, 64)
+position = Vector2(1116, 69)
 
 [node name="TNT2" parent="." unique_id=1292490807 instance=ExtResource("10_jykir")]
-position = Vector2(1950, 83)
+position = Vector2(1949, 82)
 
 [node name="stoneBlock" parent="." unique_id=1584937468 instance=ExtResource("9_c25ux")]
 position = Vector2(1362, 385)
+
+[node name="slime" parent="." unique_id=197834694 instance=ExtResource("11_1tfra")]
+position = Vector2(1418, -43)
+
+[node name="slime2" parent="." unique_id=1771617343 instance=ExtResource("11_1tfra")]
+position = Vector2(1754, -42)
+
+[node name="skeleton" parent="." unique_id=406267899 instance=ExtResource("12_t7y7d")]
+position = Vector2(1558, 274)
+scale = Vector2(1.5, 1.5)

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://jer7sxhrl2cl"]
 
-[ext_resource type="Script" uid="uid://dc08gr6wn1vfd" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="Texture2D" uid="uid://cgtswcev35g7w" path="res://resources/backgroundlobby/IMG-20260903-WA0054.jpg" id="2_7vrkn"]
+[ext_resource type="Script" uid="uid://bs5wgy501s7ig" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://b30ml7ei8848b" path="res://assets/backgrounds/bg1.jpg" id="2_7vrkn"]
+
 
 [node name="MainMenu" type="Control" unique_id=775565205]
 layout_mode = 3
