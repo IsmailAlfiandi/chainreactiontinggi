@@ -36,11 +36,16 @@ func take_hit(
 	if is_dead:
 		return
 
-	is_dead = true
+	# Let die() handle is_dead
 	die()
 
 
 func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 

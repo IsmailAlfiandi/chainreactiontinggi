@@ -7,6 +7,13 @@ enum MaterialType { WOOD, STONE, STEEL, GLASS, TNT }
 @export var push_speed: float = 280.0
 @export var destroy_speed: float = 650.0
 @export var push_force_multiplier: float = 1.0
+@export var fall_damage_enabled: bool = true
+var was_airborne: bool = false
+@export var fall_damage_min_speed: float = 20.0
+@export var fall_damage_multiplier: float = 0.5
+@export var max_fall_damage: float = 750.0
+
+var last_physics_velocity: Vector2 = Vector2.ZERO
 
 @export var max_health: float = 100.0
 var current_health: float
@@ -36,7 +43,7 @@ func _ready() -> void:
 
 		MaterialType.STONE:
 			mass = 6.0
-			push_speed = 450.0
+			push_speed = 400.0
 			destroy_speed = 800.0
 			push_force_multiplier = 1.0
 			max_health = 350.0
@@ -57,11 +64,50 @@ func _ready() -> void:
 
 	update_sprite()
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var impact_speed: float = state.linear_velocity.y
+
+	# Only process downward impact
+	if impact_speed <= fall_damage_min_speed:
+		return
+
+	# Need an actual collision
+	if state.get_contact_count() == 0:
+		return
+
+	print(
+		name,
+		" IMPACT SPEED = ",
+		impact_speed
+	)
+
+	var fall_damage: float = (
+		impact_speed - fall_damage_min_speed
+	) * fall_damage_multiplier
+
+	fall_damage = clampf(
+		fall_damage,
+		0.0,
+		max_fall_damage
+	)
+
+	print(
+		name,
+		" FALL DAMAGE = ",
+		fall_damage
+	)
+
+	# Damage the FALLING block itself
+	_apply_damage(fall_damage)
+
+	# Prevent repeated damage from the same landing
+	fall_damage_enabled = false
+
 func take_hit(
 	arrow_velocity: Vector2,
 	arrow: RigidBody2D = null
 ) -> bool:
-
+	
 	if current_health <= 0.0:
 		return true
 

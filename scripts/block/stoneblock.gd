@@ -4,9 +4,13 @@ class_name StoneBlock
 enum MaterialType { WOOD, STONE, STEEL, GLASS, TNT }
 
 @export var material_type: MaterialType = MaterialType.STONE
-@export var push_speed: float = 450.0
-@export var destroy_speed: float = 900.0
+@export var push_speed: float = 400.0
+@export var destroy_speed: float = 800.0
 @export var push_force_multiplier: float = 1.0
+@export var fall_damage_enabled: bool = true
+@export var fall_damage_min_speed: float = 50.0
+@export var fall_damage_multiplier: float = 0.5
+@export var max_fall_damage: float = 750.0
 
 @export var max_health: float = 350.0
 var current_health: float
@@ -29,15 +33,15 @@ func _ready() -> void:
 		MaterialType.WOOD:
 			mass = 2.0
 			push_speed = 280.0
-			destroy_speed = 750.0
+			destroy_speed = 650.0
 			push_force_multiplier = 1.0
 			max_health = 200.0
 			damage_multiplier = 0.18
 
 		MaterialType.STONE:
 			mass = 6.0
-			push_speed = 450.0
-			destroy_speed = 900.0
+			push_speed = 400.0
+			destroy_speed = 800.0
 			push_force_multiplier = 1.0
 			max_health = 350.0
 			damage_multiplier = 0.12
@@ -45,7 +49,7 @@ func _ready() -> void:
 		MaterialType.STEEL:
 			mass = 12.0
 			push_speed = 700.0
-			destroy_speed = 1300.0
+			destroy_speed = 1100.0
 			push_force_multiplier = 0.7
 			max_health = 500.0
 			damage_multiplier = 0.08
@@ -57,11 +61,95 @@ func _ready() -> void:
 
 	update_sprite()
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if not fall_damage_enabled:
+		return
+
+	if state.get_contact_count() == 0:
+		return
+
+	var impact_speed: float = maxf(state.linear_velocity.y, 0.0)
+
+	print(
+		name,
+		" IMPACT SPEED = ",
+		impact_speed
+	)
+
+	# Check every object touched by the falling block
+	for i in range(state.get_contact_count()):
+		var body: Node = state.get_contact_collider_object(i)
+
+		if not is_instance_valid(body):
+			continue
+
+		if body == self:
+			continue
+
+		# Ignore arrows
+		if body.is_in_group("arrow"):
+			continue
+
+		print(
+			name,
+			" HIT: ",
+			body.name
+		)
+
+		# =====================================================
+		# ENEMY -> ALWAYS DIE, EVEN AT LOW SPEED
+		# =====================================================
+		if body is Ghost or body is Ghost2 or body is bat:
+			print(
+				name,
+				" CRUSHED ENEMY: ",
+				body.name,
+				" | SPEED: ",
+				impact_speed
+			)
+
+			if body.has_method("die"):
+				body.die()
+
+			fall_damage_enabled = false
+			break
+
+		# =====================================================
+		# OTHER BLOCK -> SPEED-BASED FALL DAMAGE
+		# =====================================================
+		if impact_speed <= fall_damage_min_speed:
+			continue
+
+		var fall_damage: float = (
+			impact_speed - fall_damage_min_speed
+		) * fall_damage_multiplier
+
+		fall_damage = clampf(
+			fall_damage,
+			0.0,
+			max_fall_damage
+		)
+
+		print(
+			name,
+			" FALL DAMAGE = ",
+			fall_damage
+		)
+
+		if body.has_method("take_explosion_damage"):
+			body.take_explosion_damage(fall_damage)
+
+		elif body.has_method("_apply_damage"):
+			body._apply_damage(fall_damage)
+
+		fall_damage_enabled = false
+		break
+
 func take_hit(
 	arrow_velocity: Vector2,
 	arrow: RigidBody2D = null
 ) -> bool:
-
+	
 	if current_health <= 0.0:
 		return true
 

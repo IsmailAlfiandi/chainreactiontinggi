@@ -4,9 +4,16 @@ class_name SteelBlock
 enum MaterialType { WOOD, STONE, STEEL, GLASS, TNT }
 
 @export var material_type: MaterialType = MaterialType.STEEL
-@export var push_speed: float = 450.0
+@export var push_speed: float = 700.0
 @export var destroy_speed: float = 1100.0
-@export var push_force_multiplier: float = 1.0
+@export var push_force_multiplier: float = 0.7
+@export var fall_damage_enabled: bool = true
+@export var fall_damage_min_speed: float = 50.0
+@export var fall_damage_multiplier: float = 0.5
+@export var max_fall_damage: float = 750.0
+
+var was_airborne: bool = false
+var max_fall_speed: float = 0.0
 
 @export var max_health: float = 500.0
 var current_health: float
@@ -29,15 +36,15 @@ func _ready() -> void:
 		MaterialType.WOOD:
 			mass = 2.0
 			push_speed = 280.0
-			destroy_speed = 750.0
+			destroy_speed = 650.0
 			push_force_multiplier = 1.0
 			max_health = 200.0
 			damage_multiplier = 0.18
 
 		MaterialType.STONE:
 			mass = 6.0
-			push_speed = 450.0
-			destroy_speed = 900.0
+			push_speed = 400.0
+			destroy_speed = 800.0
 			push_force_multiplier = 1.0
 			max_health = 350.0
 			damage_multiplier = 0.12
@@ -57,11 +64,116 @@ func _ready() -> void:
 
 	update_sprite()
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if not fall_damage_enabled:
+		return
+
+	var velocity: Vector2 = state.linear_velocity
+
+	# ---------------------------------------------------------
+	# Track the fastest downward speed while falling
+	# ---------------------------------------------------------
+	if velocity.y > 0.0:
+		was_airborne = true
+
+		max_fall_speed = maxf(
+			max_fall_speed,
+			velocity.y
+		)
+
+	# ---------------------------------------------------------
+	# No collision yet
+	# ---------------------------------------------------------
+	if state.get_contact_count() == 0:
+		return
+
+	# ---------------------------------------------------------
+	# We have made contact.
+	# Use the maximum speed reached BEFORE the impact.
+	# ---------------------------------------------------------
+	if not was_airborne:
+		return
+
+	if max_fall_speed < fall_damage_min_speed:
+		# Reset because this was just a normal small collision
+		was_airborne = false
+		max_fall_speed = 0.0
+		return
+
+	print(
+		name,
+		" MAX FALL SPEED = ",
+		max_fall_speed
+	)
+
+	# Calculate damage
+	var fall_damage: float = (
+		max_fall_speed - fall_damage_min_speed
+	) * fall_damage_multiplier
+
+	fall_damage = clampf(
+		fall_damage,
+		0.0,
+		max_fall_damage
+	)
+
+	# ---------------------------------------------------------
+	# Check every object hit
+	# ---------------------------------------------------------
+	for i in state.get_contact_count():
+		var body: Node = state.get_contact_collider_object(i)
+
+		if not is_instance_valid(body):
+			continue
+
+		if body == self:
+			continue
+
+		# Ignore arrows
+		if body.is_in_group("arrow"):
+			continue
+
+		# -----------------------------------------------------
+		# ENEMY
+		# -----------------------------------------------------
+		if body is Ghost or body is Ghost2 or body is bat:
+			print(
+				name,
+				" CRUSHED ",
+				body.name,
+				" WITH ",
+				fall_damage,
+				" DAMAGE"
+			)
+
+			if body.has_method("die"):
+				body.die()
+
+			# Stop processing this fall
+			was_airborne = false
+			max_fall_speed = 0.0
+
+			break
+
+		# -----------------------------------------------------
+		# BLOCK
+		# -----------------------------------------------------
+		if body.has_method("take_explosion_damage"):
+			body.take_explosion_damage(fall_damage)
+
+		elif body.has_method("_apply_damage"):
+			body._apply_damage(fall_damage)
+
+		was_airborne = false
+		max_fall_speed = 0.0
+
+		break
+
 func take_hit(
 	arrow_velocity: Vector2,
 	arrow: RigidBody2D = null
 ) -> bool:
-
+	
 	if current_health <= 0.0:
 		return true
 

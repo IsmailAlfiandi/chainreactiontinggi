@@ -46,3 +46,5 @@ animation = &"fullHealth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067688389]
 shape = SubResource("RectangleShape2D_xwf1v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
