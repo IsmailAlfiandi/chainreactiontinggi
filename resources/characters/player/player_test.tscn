@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b6orfufwaepgp"]
+
+[ext_resource type="Script" uid="uid://b16t10obdq21x" path="res://scripts/characters/player/player_script.gd" id="1_1agwk"]
+[ext_resource type="Texture2D" uid="uid://bfw8oenxwpik1" path="res://assets/character/player/player_alpha/dummyPlayer.png" id="2_1agwk"]
+[ext_resource type="Texture2D" uid="uid://ctqqb6qc4uhy5" path="res://assets/weapons/shadowBow.png" id="3_8dq38"]
+[ext_resource type="Script" uid="uid://bwpdqp4c5q8kp" path="res://scripts/camera/camera.gd" id="4_8dq38"]
+[ext_resource type="Texture2D" uid="uid://xregofdtiq51" path="res://assets/weapons/Spear.png" id="5_qfy82"]
+[ext_resource type="Texture2D" uid="uid://clrubibcmxir7" path="res://assets/weapons/p50.png" id="6_b1mp5"]
+[ext_resource type="Texture2D" uid="uid://bsefl1bojneef" path="res://assets/weapons/ARROW.png" id="7_b1mp5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1agwk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so318"]
+radius = 26.0
+height = 106.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=233385622]
+script = ExtResource("1_1agwk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114300977]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960927308]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_so318")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=232900444]
+position = Vector2(21, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=38650554]
+position = Vector2(9.536743e-07, 3.8146973e-06)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_8dq38")
+
+[node name="BulletSpawn" type="Marker2D" parent="Weapon" unique_id=1325532789]
+position = Vector2(28, 14)
+
+[node name="camera" type="Camera2D" parent="." unique_id=2141294261]
+script = ExtResource("4_8dq38")
+
+[node name="Spear" type="Sprite2D" parent="." unique_id=1948593025]
+position = Vector2(95, 42)
+texture = ExtResource("5_qfy82")
+
+[node name="P50" type="Sprite2D" parent="." unique_id=1111512733]
+position = Vector2(-62, 161)
+texture = ExtResource("6_b1mp5")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1312469682]
+position = Vector2(-135, 106)
+texture = ExtResource("7_b1mp5")

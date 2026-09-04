@@ -5,9 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
 [ext_resource type="PackedScene" uid="uid://c1xsf57846kaq" path="res://resources/characters/enemy/ghost/ghost.tscn" id="6_vjnnd"]
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="7_0ag0w"]
-[ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="8_3gunp"]
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="8_ld5m2"]
-[ext_resource type="PackedScene" uid="uid://b4ue5wr2luyo5" path="res://resources/blocks/stone/stone_stairs.tscn" id="10_x1oef"]
+[ext_resource type="PackedScene" uid="uid://cngrmy2uxhghq" path="res://resources/blocks/wood/woodBlock.tscn" id="9_051bu"]
+[ext_resource type="PackedScene" uid="uid://bte172j4snfg1" path="res://resources/blocks/wood/wood_log.tscn" id="10_okq6g"]
+[ext_resource type="PackedScene" uid="uid://cw23r7xv61wbu" path="res://resources/characters/enemy/slime/slime.tscn" id="10_x1oef"]
+[ext_resource type="PackedScene" uid="uid://cs2y3bx4m6c1s" path="res://resources/blocks/wood/wood_stairs.tscn" id="11_qpytn"]
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
 
@@ -22,23 +24,48 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458756, 1, 65536, 458755, 1, 65536, 458754, 1, 65536, 458753, 1, 65536, 458752, 1, 65536, 458757, 1, 65536, 524293, 2, 65536, 589829, 2, 65536, 524292, 2, 65536, 589828, 2, 65536, 589827, 2, 65536, 524291, 2, 65536, 589826, 2, 65536, 589825, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524288, 2, 65536, 589824, 2, 65536, 393216, 917504, 6, 458758, 1, 65536, 458759, 1, 65536, 458760, 1, 65536, 458761, 1, 65536, 458762, 1, 65536, 458763, 1, 65536, 458764, 1, 65536, 458765, 1, 65536, 458766, 1, 65536, 458767, 1, 65536, 458768, 1, 65536, 458769, 1, 65536, 458770, 1, 65536, 458771, 1, 65536, 458772, 1, 65536, 458773, 1, 65536, 458774, 1, 65536, 458775, 1, 65536, 458776, 1, 65536, 458777, 1, 65536, 458778, 1, 65536, 458779, 1, 65536, 458780, 1, 65536, 458781, 1, 65536, 458782, 1, 65536, 458783, 1, 65536, 524294, 2, 65536, 524295, 2, 65536, 524296, 2, 65536, 524297, 2, 65536, 524298, 2, 65536, 589830, 2, 65536, 589831, 2, 65536, 589832, 2, 65536, 589833, 2, 65536, 589834, 2, 65536, 589835, 2, 65536, 589836, 2, 65536, 589837, 2, 65536, 589838, 2, 65536, 589839, 2, 65536, 589840, 2, 65536, 589841, 2, 65536, 524305, 2, 65536, 524304, 2, 65536, 524303, 2, 65536, 524302, 2, 65536, 524301, 2, 65536, 524300, 2, 65536, 524299, 2, 65536, 458784, 1, 65536, 458785, 1, 65536, 458786, 1, 65536, 458787, 1, 65536, 458788, 1, 65536, 458789, 1, 65536, 458790, 1, 65536, 458791, 1, 65536, 458792, 1, 65536, 458793, 1, 65536, 458751, 2, 65536, 393215, 2, 65536, 327679, 2, 65536, 262143, 2, 65536, 196607, 2, 65536, 131071, 2, 65536, 65535, 2, 65536, -1, 2, 65536, -65537, 2, 65536, -131073, 2, 65536, -196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, -393217, 2, 65536, -458753, 2, 65536, -524289, 2, 65536, -589825, 2, 65536, -655361, 2, 65536, -720897, 2, 65536, -786433, 2, 65536, -851969, 2, 65536, -917505, 2, 65536, 393258, 2, 65536, 327722, 2, 65536, 262186, 2, 65536, 196650, 2, 65536, 131114, 2, 65536, 65578, 2, 65536, 42, 2, 65536, -65494, 2, 65536, -131030, 2, 65536, -196566, 2, 65536, -262102, 2, 65536, -327638, 2, 65536, -393174, 2, 65536, -458710, 2, 65536, -524246, 2, 65536, -589782, 2, 65536, -655318, 2, 65536, -720854, 2, 65536, -786390, 2, 65536, -851926, 2, 65536, -917462, 2, 65536, -982998, 2, 65536, 524306, 2, 65536, 524307, 2, 65536, 524308, 2, 65536, 524309, 2, 65536, 524310, 2, 65536, 524311, 2, 65536, 524312, 2, 65536, 524313, 2, 65536, 524314, 2, 65536, 524315, 2, 65536, 524316, 2, 65536, 524317, 2, 65536, 524318, 2, 65536, 524319, 2, 65536, 524320, 2, 65536, 524321, 2, 65536, 524322, 2, 65536, 524323, 2, 65536, 524329, 2, 65536, 524328, 2, 65536, 524327, 2, 65536, 524326, 2, 65536, 524325, 2, 65536, 524324, 2, 65536, 458794, 2, 65536, 524287, 2, 65536, 589823, 2, 65536, 655359, 2, 65536, 720895, 2, 65536, 655360, 2, 65536, 655361, 2, 65536, 655362, 2, 65536, 655365, 2, 65536, 655364, 2, 65536, 655363, 2, 65536, 655366, 2, 65536, 655367, 2, 65536, 655368, 2, 65536, 655369, 2, 65536, 655370, 2, 65536, 655371, 2, 65536, 655372, 2, 65536, 655373, 2, 65536, 655374, 2, 65536, 655375, 2, 65536, 655376, 2, 65536, 655377, 2, 65536, 655378, 2, 65536, 589842, 2, 65536, 589843, 2, 65536, 589844, 2, 65536, 589845, 2, 65536, 589846, 2, 65536, 589847, 2, 65536, 589848, 2, 65536, 589849, 2, 65536, 589850, 2, 65536, 589851, 2, 65536, 589852, 2, 65536, 589853, 2, 65536, 589854, 2, 65536, 589855, 2, 65536, 589856, 2, 65536, 589857, 2, 65536, 589858, 2, 65536, 589859, 2, 65536, 589860, 2, 65536, 589865, 2, 65536, 524330, 2, 65536, 589866, 2, 65536, 655402, 2, 65536, 655401, 2, 65536, 655400, 2, 65536, 589864, 2, 65536, 589863, 2, 65536, 589862, 2, 65536, 589861, 2, 65536, 655398, 2, 65536, 655399, 2, 65536, 655397, 2, 65536, 655396, 2, 65536, 655395, 2, 65536, 655394, 2, 65536, 655393, 2, 65536, 655392, 2, 65536, 655391, 2, 65536, 655390, 2, 65536, 655389, 2, 65536, 655388, 2, 65536, 655387, 2, 65536, 655386, 2, 65536, 655385, 2, 65536, 655384, 2, 65536, 655383, 2, 65536, 655382, 2, 65536, 655381, 2, 65536, 655380, 2, 65536, 655379, 2, 65536)
 
 [node name="CharacterBody2D" parent="." unique_id=233385622 instance=ExtResource("3_vvnjs")]
-position = Vector2(1124, 388)
+position = Vector2(1399, 388)
 
 [node name="CharacterBody2D2" parent="." unique_id=1480107330 instance=ExtResource("6_vjnnd")]
-position = Vector2(2030, 399)
+position = Vector2(2213, 125)
 
 [node name="idle_point" parent="." unique_id=713395278 instance=ExtResource("7_0ag0w")]
 position = Vector2(1822, 375)
 
 [node name="idle_point2" parent="." unique_id=235442717 instance=ExtResource("7_0ag0w")]
-position = Vector2(2537, 362)
-
-[node name="TNT" parent="." unique_id=1260058245 instance=ExtResource("8_3gunp")]
-position = Vector2(1379, 395)
-
-[node name="stoneStairs" parent="." unique_id=1148623654 instance=ExtResource("10_x1oef")]
-position = Vector2(1260, 394)
-rotation = 4.712389
+position = Vector2(2055, 310)
 
 [node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("8_ld5m2")]
-position = Vector2(922, 393)
+position = Vector2(548, 391)
+
+[node name="woodLog" parent="." unique_id=23274698 instance=ExtResource("10_okq6g")]
+position = Vector2(1853, 401)
+rotation = 1.5707964
+
+[node name="woodBlock3" parent="." unique_id=2112484535 instance=ExtResource("9_051bu")]
+position = Vector2(1905, 272)
+
+[node name="woodStairs" parent="." unique_id=338967184 instance=ExtResource("11_qpytn")]
+position = Vector2(2023, 403)
+
+[node name="woodLog3" parent="." unique_id=635701237 instance=ExtResource("10_okq6g")]
+position = Vector2(1900, 402)
+rotation = 1.5707964
+
+[node name="woodLog4" parent="." unique_id=792679145 instance=ExtResource("10_okq6g")]
+position = Vector2(1950, 400)
+rotation = 1.5707964
+
+[node name="woodLog6" parent="." unique_id=1915138724 instance=ExtResource("10_okq6g")]
+position = Vector2(1905, 337)
+
+[node name="woodBlock" parent="." unique_id=1278837116 instance=ExtResource("9_051bu")]
+position = Vector2(1904, 172)
+
+[node name="woodStairs2" parent="." unique_id=1652794978 instance=ExtResource("11_qpytn")]
+position = Vector2(1786, 400)
+rotation = 4.712389
+
+[node name="CharacterBody2D3" parent="." unique_id=1653129241 instance=ExtResource("10_x1oef")]
+position = Vector2(1909, 65)
+scale = Vector2(0.5, 0.5)
