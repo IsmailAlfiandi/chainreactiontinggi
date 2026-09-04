@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qvh0t2nllyen"]
 
-[ext_resource type="Script" uid="uid://b7k4jdeu5coqf" path="res://level_select.gd" id="1_il3u1"]
-[ext_resource type="Texture2D" uid="uid://b30ml7ei8848b" path="res://assets/backgrounds/bg1.jpg" id="2_vomi7"]
+[ext_resource type="Script" uid="uid://cb742vkbkyq23" path="res://level_select.gd" id="1_il3u1"]
+[ext_resource type="Texture2D" uid="uid://ewbfsr6um2ev" path="res://resources/backgroundlobby/IMG-20260903-WA0060.jpg" id="2_vomi7"]
 
 [node name="LevelSelect" type="Control" unique_id=1861770767]
 layout_mode = 3

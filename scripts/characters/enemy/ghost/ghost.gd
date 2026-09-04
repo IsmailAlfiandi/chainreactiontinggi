@@ -73,7 +73,6 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 	
-	# Optional: disable collision so arrow doesn't get stuck
 	$CollisionShape2D.set_deferred("disabled", true)
 	if has_node("DetectionArea"):
 		$DetectionArea.set_deferred("monitoring", false)

@@ -1,35 +1,21 @@
 extends RigidBody2D
 class_name BombArrow
 
-# ============================================================
-# SETTINGS
-# ============================================================
-
 @export var lifetime: float = 8.0
 @export var stop_speed: float = 40.0
 
-# Normal arrow-style piercing
 @export var pierce_speed_multiplier: float = 0.8
 
-# Camera
 @export var camera_return_delay: float = 3.0
 
-# Explosion
 @export var explosion_radius: float = 500.0
 @export var explosion_force: float = 1000.0
 @export var explosion_damage: float = 650.0
 @export var explosion_linger_time: float = 1.4
 
-# Sticking
 @export var stick_depth: float = 16.0
 
-# How long the player can manually detonate the bomb
 @export var explode_window: float = 3.0
-
-
-# ============================================================
-# STATE
-# ============================================================
 
 var has_landed: bool = false
 var has_exploded: bool = false
@@ -41,18 +27,8 @@ var stuck_to: Node2D = null
 var stuck_offset: Vector2 = Vector2.ZERO
 var stuck_rotation_offset: float = 0.0
 
-
-# ============================================================
-# NODES
-# ============================================================
-
 @onready var explosion_area: Area2D = $ExplosionArea
 @onready var anim: AnimatedSprite2D = $Sprite2D
-
-
-# ============================================================
-# READY
-# ============================================================
 
 func _ready() -> void:
 	add_to_group("arrow")
@@ -60,7 +36,6 @@ func _ready() -> void:
 	if anim:
 		anim.play("default")
 
-	# High speed collision detection
 	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
 
 	contact_monitor = true
@@ -68,24 +43,16 @@ func _ready() -> void:
 
 	body_entered.connect(_on_body_entered)
 
-	# Explosion detection area
 	if explosion_area:
 		explosion_area.monitoring = true
 		explosion_area.monitorable = false
 
-	# Start manual explosion timer
 	_start_explode_window()
 
-	# Lifetime
 	await get_tree().create_timer(lifetime).timeout
 
 	if is_instance_valid(self) and not has_exploded:
 		queue_free()
-
-
-# ============================================================
-# EXPLOSION WINDOW
-# ============================================================
 
 func _start_explode_window() -> void:
 	await get_tree().create_timer(explode_window).timeout
@@ -98,18 +65,10 @@ func _start_explode_window() -> void:
 
 	can_explode = false
 
-
-# ============================================================
-# PHYSICS
-# ============================================================
-
 func _physics_process(delta: float) -> void:
 	if has_exploded:
 		return
 
-	# ----------------------------------------
-	# Arrow is stuck to something
-	# ----------------------------------------
 	if has_landed:
 		if is_instance_valid(stuck_to):
 			global_position = stuck_to.to_global(stuck_offset)
@@ -118,15 +77,12 @@ func _physics_process(delta: float) -> void:
 				+ stuck_rotation_offset
 			)
 		else:
-			# Target was destroyed
 			release_from_target()
 
 		return
 
-	# Save velocity BEFORE collision
 	last_velocity = linear_velocity
 
-	# Rotate arrow toward movement direction
 	if linear_velocity.length() > 20.0:
 		rotation = lerp_angle(
 			rotation,
@@ -134,27 +90,16 @@ func _physics_process(delta: float) -> void:
 			12.0 * delta
 		)
 
-	# If arrow becomes too slow, land
 	if linear_velocity.length() < stop_speed:
 		has_landed = true
 		_on_landed()
-
-
-# ============================================================
-# COLLISION
-# ============================================================
 
 func _on_body_entered(body: Node) -> void:
 	if has_landed or has_exploded:
 		return
 
-	# Ignore other arrows
 	if body.is_in_group("arrow"):
 		return
-
-	# ========================================================
-	# BLOCKS
-	# ========================================================
 
 	if (
 		body is GlassBlock
@@ -169,38 +114,22 @@ func _on_body_entered(body: Node) -> void:
 		)
 
 		if block_destroyed:
-			# Block died → penetrate through it
 			_pierce_block()
 		else:
-			# Block survived → stick to it
 			_stick_to_body(body)
 
-			# Camera waits before returning
 			_start_camera_return()
 
 		return
-
-	# ========================================================
-	# ENEMIES
-	# ========================================================
-
+		
 	if body is Ghost or body is Ghost2 or body is bat:
 		body.take_hit(last_velocity, self)
 
 		# Bomb arrow keeps flying through enemy
 		return
 
-	# ========================================================
-	# WORLD BORDER / TILEMAP / WALL
-	# ========================================================
-
 	has_landed = true
 	_on_landed()
-
-
-# ============================================================
-# STICK TO BLOCK
-# ============================================================
 
 func _stick_to_body(body: Node2D) -> void:
 	if has_landed:
@@ -212,7 +141,6 @@ func _stick_to_body(body: Node2D) -> void:
 	has_landed = true
 	stuck_to = body
 
-	# Stop physics
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 
@@ -222,13 +150,11 @@ func _stick_to_body(body: Node2D) -> void:
 
 	contact_monitor = false
 
-	# Disable arrow collision
 	var col := get_node_or_null("CollisionShape2D")
 
 	if col:
 		col.set_deferred("disabled", true)
 
-	# Push deeper into block
 	var push_dir: Vector2 = last_velocity.normalized()
 
 	if push_dir.length_squared() < 0.01:
@@ -240,18 +166,12 @@ func _stick_to_body(body: Node2D) -> void:
 		randf_range(-3.0, 3.0)
 	)
 
-	# Store local transform
 	stuck_offset = body.to_local(global_position)
 
 	stuck_rotation_offset = (
 		global_rotation
 		- body.global_rotation
 	)
-
-
-# ============================================================
-# PIERCE BLOCK
-# ============================================================
 
 func _pierce_block() -> void:
 	if has_exploded:
@@ -264,17 +184,14 @@ func _pierce_block() -> void:
 	if direction.length_squared() < 0.01:
 		direction = Vector2.RIGHT.rotated(global_rotation)
 
-	# Reduce speed after penetrating the block
 	linear_velocity = (
 		direction
 		* speed
 		* pierce_speed_multiplier
 	)
 
-	# Move beyond the destroyed block
 	global_position += direction * 10.0
 
-	# Keep physics active
 	has_landed = false
 	stuck_to = null
 
@@ -287,15 +204,6 @@ func _pierce_block() -> void:
 	if col:
 		col.set_deferred("disabled", false)
 
-	print(
-		"Bomb arrow pierced block. Speed = ",
-		linear_velocity.length()
-	)
-
-
-# ============================================================
-# LANDED
-# ============================================================
 
 func _on_landed() -> void:
 	_freeze_arrow()
@@ -316,11 +224,6 @@ func _freeze_arrow() -> void:
 
 	if col:
 		col.set_deferred("disabled", true)
-
-
-# ============================================================
-# RELEASE FROM DESTROYED BLOCK
-# ============================================================
 
 func release_from_target() -> void:
 	if not is_instance_valid(self):
@@ -347,11 +250,6 @@ func release_from_target() -> void:
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 
-
-# ============================================================
-# CAMERA
-# ============================================================
-
 func _start_camera_return() -> void:
 	var camera := get_tree().get_first_node_in_group("camera")
 
@@ -369,11 +267,6 @@ func _notify_player() -> void:
 	if player and player.has_method("after_hit"):
 		player.after_hit()
 
-
-# ============================================================
-# EXPLOSION
-# ============================================================
-
 func explode() -> void:
 	if has_exploded or not can_explode:
 		return
@@ -381,21 +274,15 @@ func explode() -> void:
 	has_exploded = true
 	can_explode = false
 
-	# Stop the bomb arrow
 	_freeze_arrow()
 
-	# Make sure physics has updated before checking nearby bodies
 	await get_tree().physics_frame
 
-	# Play explosion animation
 	if anim:
 		anim.play("explode")
 
 	var bodies: Array = []
 
-	# =========================================================
-	# Get bodies from ExplosionArea
-	# =========================================================
 	if explosion_area:
 		explosion_area.global_position = global_position
 		explosion_area.monitoring = true
@@ -405,9 +292,6 @@ func explode() -> void:
 
 		bodies = explosion_area.get_overlapping_bodies()
 
-	# =========================================================
-	# Fallback: physics shape query
-	# =========================================================
 	if bodies.is_empty():
 		var space_state := get_world_2d().direct_space_state
 
@@ -434,15 +318,9 @@ func explode() -> void:
 			if result.has("collider"):
 				bodies.append(result.collider)
 
-	# =========================================================
-	# Apply explosion
-	# =========================================================
 	for body in bodies:
 		_affect_body(body)
 
-	# =========================================================
-	# Camera
-	# =========================================================
 	var camera := get_tree().get_first_node_in_group("camera")
 
 	if camera and camera.has_method("hold_at_explosion"):
@@ -457,11 +335,6 @@ func explode() -> void:
 
 	if is_instance_valid(self):
 		queue_free()
-
-
-# ============================================================
-# EXPLOSION AFFECT BODY
-# ============================================================
 
 func _affect_body(body: Node) -> void:
 	if not is_instance_valid(body):
@@ -495,9 +368,6 @@ func _affect_body(body: Node) -> void:
 		* falloff
 	)
 
-	# =========================================================
-	# BLOCKS
-	# =========================================================
 	if (
 		body is GlassBlock
 		or body is WoodBlock
@@ -505,12 +375,6 @@ func _affect_body(body: Node) -> void:
 		or body is SteelBlock
 		or body is TNTBlock
 	):
-		print(
-			"Explosion hit block: ",
-			body.name,
-			" Damage: ",
-			damage
-		)
 
 		# DAMAGE
 		if body.has_method("take_explosion_damage"):
@@ -519,7 +383,6 @@ func _affect_body(body: Node) -> void:
 		elif body.has_method("_apply_damage"):
 			body._apply_damage(damage)
 
-		# PUSH ONLY IF BLOCK SURVIVED
 		if is_instance_valid(body) and body.current_health > 0.0:
 			body.sleeping = false
 			body.freeze = false
@@ -527,16 +390,7 @@ func _affect_body(body: Node) -> void:
 
 		return
 
-	# =========================================================
-	# ENEMIES
-	# =========================================================
 	if body is Ghost or body is Ghost2 or body is bat:
-		print(
-			"Explosion hit enemy: ",
-			body.name,
-			" Damage: ",
-			damage
-		)
 
 		if body.has_method("take_explosion_damage"):
 			body.take_explosion_damage(damage)
@@ -552,9 +406,6 @@ func _affect_body(body: Node) -> void:
 
 		return
 
-	# =========================================================
-	# OTHER RIGIDBODIES
-	# =========================================================
 	if body is RigidBody2D:
 		body.sleeping = false
 		body.freeze = false

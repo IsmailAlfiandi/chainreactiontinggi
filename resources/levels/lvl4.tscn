@@ -1,14 +1,12 @@
-[gd_scene format=3 uid="uid://brf021nmyx3q6"]
+[gd_scene format=3 uid="uid://cjto4c3fep4gf"]
 
-[ext_resource type="Texture2D" uid="uid://b30ml7ei8848b" path="res://assets/backgrounds/bg1.jpg" id="1_qfofm"]
+[ext_resource type="Texture2D" uid="uid://qi5ukhs0ms1" path="res://assets/backgrounds/IMG-20260830-WA0059.jpg" id="1_ysau3"]
 [ext_resource type="TileSet" uid="uid://cphy0glwlq30a" path="res://resources/blocks/misc/default_tileset.tres" id="2_bxjj3"]
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_qfofm"]
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="5_m3274"]
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="6_o0nlq"]
 [ext_resource type="PackedScene" uid="uid://b2ifh7v2rbrrk" path="res://resources/blocks/steel/steel_log.tscn" id="10_bxjj3"]
-[ext_resource type="Texture2D" uid="uid://dxu77kqmvvqsd" path="res://assets/tiles/decorations/pillar/1000415764.png" id="11_mapk4"]
 [ext_resource type="PackedScene" uid="uid://b4ue5wr2luyo5" path="res://resources/blocks/stone/stone_stairs.tscn" id="11_qfofm"]
-[ext_resource type="Texture2D" uid="uid://dbi87f3mvjens" path="res://assets/tiles/decorations/pillar/1000415769.png" id="12_m3274"]
 [ext_resource type="PackedScene" uid="uid://02p7fleqkbpe" path="res://resources/blocks/steel/steel_stairs.tscn" id="12_mapk4"]
 [ext_resource type="PackedScene" uid="uid://dh3quui24fy45" path="res://resources/blocks/stone/stoneBlock.tscn" id="13_m3274"]
 [ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="15_o0nlq"]
@@ -17,7 +15,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qfofm")
+"texture": ExtResource("1_ysau3")
 }],
 "loop": 1,
 "name": &"ANIMASI",
@@ -39,7 +37,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458756, 1, 65536, 458755, 1, 65536, 458754, 1, 65536, 458753, 1, 65536, 458752, 1, 65536, 458757, 1, 65536, 524293, 2, 65536, 589829, 2, 65536, 524292, 2, 65536, 589828, 2, 65536, 589827, 2, 65536, 524291, 2, 65536, 589826, 2, 65536, 589825, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524288, 2, 65536, 589824, 2, 65536, 393216, 917504, 6, 458758, 1, 65536, 458759, 1, 65536, 458760, 1, 65536, 458761, 1, 65536, 458762, 1, 65536, 458763, 1, 65536, 458764, 1, 65536, 458765, 1, 65536, 458766, 1, 65536, 458767, 1, 65536, 458768, 1, 65536, 458769, 1, 65536, 458770, 1, 65536, 458771, 1, 65536, 458772, 1, 65536, 458773, 1, 65536, 458774, 1, 65536, 458775, 1, 65536, 458776, 1, 65536, 458777, 1, 65536, 458778, 1, 65536, 458779, 1, 65536, 458780, 1, 65536, 458781, 1, 65536, 458782, 1, 65536, 458783, 1, 65536, 524294, 2, 65536, 524295, 2, 65536, 524296, 2, 65536, 524297, 2, 65536, 524298, 2, 65536, 589830, 2, 65536, 589831, 2, 65536, 589832, 2, 65536, 589833, 2, 65536, 589834, 2, 65536, 589835, 2, 65536, 589836, 2, 65536, 589837, 2, 65536, 589838, 2, 65536, 589839, 2, 65536, 589840, 2, 65536, 589841, 2, 65536, 524305, 2, 65536, 524304, 2, 65536, 524303, 2, 65536, 524302, 2, 65536, 524301, 2, 65536, 524300, 2, 65536, 524299, 2, 65536, 458784, 1, 65536, 458785, 1, 65536, 458786, 1, 65536, 458787, 1, 65536, 458788, 1, 65536, 458789, 1, 65536, 458790, 1, 65536, 458791, 1, 65536, 458792, 1, 65536, 458793, 1, 65536, 458751, 2, 65536, 393215, 2, 65536, 327679, 2, 65536, 262143, 2, 65536, 196607, 2, 65536, 131071, 2, 65536, 65535, 2, 65536, -1, 2, 65536, -65537, 2, 65536, -131073, 2, 65536, -196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, -393217, 2, 65536, -458753, 2, 65536, -524289, 2, 65536, -589825, 2, 65536, -655361, 2, 65536, -720897, 2, 65536, -786433, 2, 65536, -851969, 2, 65536, -917505, 2, 65536, 393258, 2, 65536, 327722, 2, 65536, 262186, 2, 65536, 196650, 2, 65536, 131114, 2, 65536, 65578, 2, 65536, 42, 2, 65536, -65494, 2, 65536, -131030, 2, 65536, -196566, 2, 65536, -262102, 2, 65536, -327638, 2, 65536, -393174, 2, 65536, -458710, 2, 65536, -524246, 2, 65536, -589782, 2, 65536, -655318, 2, 65536, -720854, 2, 65536, -786390, 2, 65536, -851926, 2, 65536, -917462, 2, 65536, -982998, 2, 65536, 524306, 2, 65536, 524307, 2, 65536, 524308, 2, 65536, 524309, 2, 65536, 524310, 2, 65536, 524311, 2, 65536, 524312, 2, 65536, 524313, 2, 65536, 524314, 2, 65536, 524315, 2, 65536, 524316, 2, 65536, 524317, 2, 65536, 524318, 2, 65536, 524319, 2, 65536, 524320, 2, 65536, 524321, 2, 65536, 524322, 2, 65536, 524323, 2, 65536, 524329, 2, 65536, 524328, 2, 65536, 524327, 2, 65536, 524326, 2, 65536, 524325, 2, 65536, 524324, 2, 65536, 458794, 2, 65536, 524287, 2, 65536, 589823, 2, 65536, 655359, 2, 65536, 720895, 2, 65536, 655360, 2, 65536, 655361, 2, 65536, 655362, 2, 65536, 655365, 2, 65536, 655364, 2, 65536, 655363, 2, 65536, 655366, 2, 65536, 655367, 2, 65536, 655368, 2, 65536, 655369, 2, 65536, 655370, 2, 65536, 655371, 2, 65536, 655372, 2, 65536, 655373, 2, 65536, 655374, 2, 65536, 655375, 2, 65536, 655376, 2, 65536, 655377, 2, 65536, 655378, 2, 65536, 589842, 2, 65536, 589843, 2, 65536, 589844, 2, 65536, 589845, 2, 65536, 589846, 2, 65536, 589847, 2, 65536, 589848, 2, 65536, 589849, 2, 65536, 589850, 2, 65536, 589851, 2, 65536, 589852, 2, 65536, 589853, 2, 65536, 589854, 2, 65536, 589855, 2, 65536, 589856, 2, 65536, 589857, 2, 65536, 589858, 2, 65536, 589859, 2, 65536, 589860, 2, 65536, 589865, 2, 65536, 524330, 2, 65536, 589866, 2, 65536, 655402, 2, 65536, 655401, 2, 65536, 655400, 2, 65536, 589864, 2, 65536, 589863, 2, 65536, 589862, 2, 65536, 589861, 2, 65536, 655398, 2, 65536, 655399, 2, 65536, 655397, 2, 65536, 655396, 2, 65536, 655395, 2, 65536, 655394, 2, 65536, 655393, 2, 65536, 655392, 2, 65536, 655391, 2, 65536, 655390, 2, 65536, 655389, 2, 65536, 655388, 2, 65536, 655387, 2, 65536, 655386, 2, 65536, 655385, 2, 65536, 655384, 2, 65536, 655383, 2, 65536, 655382, 2, 65536, 655381, 2, 65536, 655380, 2, 65536, 655379, 2, 65536)
 
 [node name="CharacterBody2D" parent="." unique_id=233385622 instance=ExtResource("3_qfofm")]
-position = Vector2(189, 364)
+position = Vector2(132, 369)
 
 [node name="idle_point" parent="." unique_id=713395278 instance=ExtResource("5_m3274")]
 position = Vector2(1822, 375)
@@ -48,89 +46,173 @@ position = Vector2(1822, 375)
 position = Vector2(2055, 310)
 
 [node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("6_o0nlq")]
-position = Vector2(2020, 397)
+position = Vector2(1162, 380)
 
 [node name="steelBlock2" parent="." unique_id=849275812 instance=ExtResource("6_o0nlq")]
-position = Vector2(2176, 269)
+position = Vector2(1667, 388)
+
+[node name="steelBlock5" parent="." unique_id=1452466108 instance=ExtResource("6_o0nlq")]
+position = Vector2(1161, 175)
+
+[node name="steelBlock6" parent="." unique_id=1391756463 instance=ExtResource("6_o0nlq")]
+position = Vector2(1160, 277)
+
+[node name="steelBlock7" parent="." unique_id=832687885 instance=ExtResource("6_o0nlq")]
+position = Vector2(1565, 386)
 
 [node name="steelLog" parent="." unique_id=699769446 instance=ExtResource("10_bxjj3")]
-position = Vector2(2083, 392)
+position = Vector2(1321, 284)
 rotation = 1.5707964
 
 [node name="steelLog2" parent="." unique_id=758140228 instance=ExtResource("10_bxjj3")]
-position = Vector2(2202, 395)
+position = Vector2(1499, 185)
+rotation = 1.5707964
+
+[node name="steelLog6" parent="." unique_id=423229055 instance=ExtResource("10_bxjj3")]
+position = Vector2(1498, 81)
+rotation = 1.5707964
+
+[node name="steelLog18" parent="." unique_id=901403103 instance=ExtResource("10_bxjj3")]
+position = Vector2(1396, 78)
+rotation = 1.5707964
+
+[node name="steelLog19" parent="." unique_id=1999585972 instance=ExtResource("10_bxjj3")]
+position = Vector2(1396, 181)
+rotation = 1.5707964
+
+[node name="steelLog20" parent="." unique_id=358950326 instance=ExtResource("10_bxjj3")]
+position = Vector2(1397, 286)
 rotation = 1.5707964
 
 [node name="stoneStairs" parent="." unique_id=1148623654 instance=ExtResource("11_qfofm")]
-position = Vector2(1811, -119)
+position = Vector2(1163, -6.999939)
+rotation = 2.3561945
+
+[node name="stoneStairs7" parent="." unique_id=1451707226 instance=ExtResource("11_qfofm")]
+position = Vector2(1997, 29)
+rotation = 2.3561945
 
 [node name="stoneStairs2" parent="." unique_id=1565473234 instance=ExtResource("11_qfofm")]
-position = Vector2(2020, 293)
+position = Vector2(1528, -48)
+rotation = 4.712389
+
+[node name="stoneStairs6" parent="." unique_id=2072088043 instance=ExtResource("11_qfofm")]
+position = Vector2(1528, -48)
 rotation = 4.712389
 
 [node name="steelBlock3" parent="." unique_id=1871266885 instance=ExtResource("6_o0nlq")]
-position = Vector2(1808, -11)
+position = Vector2(1768, 387)
 
 [node name="steelStairs" parent="." unique_id=746125302 instance=ExtResource("12_mapk4")]
-position = Vector2(2325, 300)
+position = Vector2(2197, 387)
+rotation = 6.2831855
+
+[node name="steelStairs2" parent="." unique_id=1291564409 instance=ExtResource("12_mapk4")]
+position = Vector2(956, 380)
+rotation = 4.712389
 
 [node name="steelLog3" parent="." unique_id=1300930755 instance=ExtResource("10_bxjj3")]
-position = Vector2(2226, 334.00003)
+position = Vector2(1448, 16)
+rotation = 0.017453292
+
+[node name="steelLog8" parent="." unique_id=1936977556 instance=ExtResource("10_bxjj3")]
+position = Vector2(1553.0001, 18.000002)
+rotation = 0.017453292
+
+[node name="steelLog14" parent="." unique_id=89363008 instance=ExtResource("10_bxjj3")]
+position = Vector2(1659, 15.000002)
+rotation = 0.017453292
+
+[node name="steelLog17" parent="." unique_id=44465704 instance=ExtResource("10_bxjj3")]
+position = Vector2(1767, 18)
 rotation = 0.017453292
 
 [node name="steelLog5" parent="." unique_id=417586069 instance=ExtResource("10_bxjj3")]
-position = Vector2(2143, 395)
+position = Vector2(1320, 78)
 rotation = 1.5707964
 
 [node name="steelLog9" parent="." unique_id=1250441578 instance=ExtResource("10_bxjj3")]
-position = Vector2(2258, 397)
+position = Vector2(1500, 290)
 rotation = 1.5707964
 
 [node name="steelLog4" parent="." unique_id=570712578 instance=ExtResource("10_bxjj3")]
-position = Vector2(2123, 332)
+position = Vector2(1345, 17)
 
 [node name="steelBlock4" parent="." unique_id=1247177903 instance=ExtResource("6_o0nlq")]
-position = Vector2(2323, 398)
+position = Vector2(1059, 385)
+
+[node name="steelBlock8" parent="." unique_id=1961813385 instance=ExtResource("6_o0nlq")]
+position = Vector2(1992, 392)
+
+[node name="steelBlock9" parent="." unique_id=1019268215 instance=ExtResource("6_o0nlq")]
+position = Vector2(2095, 394)
+
+[node name="steelBlock10" parent="." unique_id=1971827469 instance=ExtResource("6_o0nlq")]
+position = Vector2(1994, 289)
+
+[node name="steelBlock11" parent="." unique_id=797465127 instance=ExtResource("6_o0nlq")]
+position = Vector2(1996, 186)
 
 [node name="steelLog7" parent="." unique_id=2059404550 instance=ExtResource("10_bxjj3")]
-position = Vector2(2084, 271)
+position = Vector2(1606, 78)
 rotation = 1.5707964
 
-[node name="steelLog8" parent="." unique_id=1069379468 instance=ExtResource("10_bxjj3")]
-position = Vector2(1770, 381)
+[node name="steelLog12" parent="." unique_id=432473583 instance=ExtResource("10_bxjj3")]
+position = Vector2(1712, 185)
+rotation = 1.5707964
+
+[node name="steelLog13" parent="." unique_id=1956315877 instance=ExtResource("10_bxjj3")]
+position = Vector2(1712, 83)
+rotation = 1.5707964
+
+[node name="steelLog21" parent="." unique_id=492378226 instance=ExtResource("10_bxjj3")]
+position = Vector2(1802, 284)
+rotation = 1.5707964
+
+[node name="steelLog22" parent="." unique_id=26160941 instance=ExtResource("10_bxjj3")]
+position = Vector2(1804, 185)
+rotation = 1.5707964
+
+[node name="steelLog23" parent="." unique_id=607271491 instance=ExtResource("10_bxjj3")]
+position = Vector2(1803, 82)
+rotation = 1.5707964
+
+[node name="steelLog10" parent="." unique_id=1477572411 instance=ExtResource("10_bxjj3")]
+position = Vector2(1713, 290)
+rotation = 1.5707964
+
+[node name="steelLog15" parent="." unique_id=2094734112 instance=ExtResource("10_bxjj3")]
+position = Vector2(1606, 182)
+rotation = 1.5707964
+
+[node name="steelLog16" parent="." unique_id=519850740 instance=ExtResource("10_bxjj3")]
+position = Vector2(1607, 286)
 rotation = 1.5707964
 
 [node name="stoneStairs3" parent="." unique_id=1760984279 instance=ExtResource("11_qfofm")]
-position = Vector2(2127, 168)
+position = Vector2(1262, 381)
 rotation = 4.712389
 
-[node name="steelLog10" parent="." unique_id=128873506 instance=ExtResource("10_bxjj3")]
-position = Vector2(1854, 378)
-rotation = 1.5707964
-
 [node name="steelLog11" parent="." unique_id=161012570 instance=ExtResource("10_bxjj3")]
-position = Vector2(2261, 272)
+position = Vector2(1320, 180)
 rotation = 1.5707964
 
 [node name="stoneStairs4" parent="." unique_id=2127876389 instance=ExtResource("11_qfofm")]
-position = Vector2(2231, 166)
+position = Vector2(1873, 384)
+rotation = 6.2831855
+
+[node name="stoneStairs5" parent="." unique_id=1480231383 instance=ExtResource("11_qfofm")]
+position = Vector2(1629, -47)
 rotation = 6.2831855
 
 [node name="stoneBlock2" parent="." unique_id=86951257 instance=ExtResource("13_m3274")]
-position = Vector2(1811, 87)
-
-[node name="steelLog12" parent="." unique_id=134558219 instance=ExtResource("10_bxjj3")]
-position = Vector2(1812, 182)
-rotation = 1.5707964
+position = Vector2(1465, 384)
 
 [node name="TNT" parent="." unique_id=1260058245 instance=ExtResource("15_o0nlq")]
-position = Vector2(1765, 280)
+position = Vector2(1117, 64)
 
-[node name="1000415764" type="Sprite2D" parent="." unique_id=560356765]
-position = Vector2(775, 250)
-texture = ExtResource("11_mapk4")
+[node name="TNT2" parent="." unique_id=1292490807 instance=ExtResource("15_o0nlq")]
+position = Vector2(1950, 83)
 
-[node name="1000415769" type="Sprite2D" parent="." unique_id=1218841651]
-position = Vector2(1382, 421.99997)
-scale = Vector2(0.96484375, 0.6284181)
-texture = ExtResource("12_m3274")
+[node name="stoneBlock" parent="." unique_id=1584937468 instance=ExtResource("13_m3274")]
+position = Vector2(1362, 385)

@@ -23,8 +23,6 @@ func enemy_killed() -> void:
 
 	enemies_remaining -= 1
 
-	print("Enemies remaining: ", enemies_remaining)
-
 	if enemies_remaining <= 0:
 		enemies_remaining = 0
 		game_won = true

@@ -75,11 +75,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() == 0:
 		return
 
-	print(
-		name,
-		" IMPACT SPEED = ",
-		impact_speed
-	)
 
 	var fall_damage: float = (
 		impact_speed - fall_damage_min_speed
@@ -91,11 +86,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		max_fall_damage
 	)
 
-	print(
-		name,
-		" FALL DAMAGE = ",
-		fall_damage
-	)
 
 	# Damage the FALLING block itself
 	_apply_damage(fall_damage)
@@ -113,7 +103,6 @@ func take_hit(
 
 	var impact_speed: float = arrow_velocity.length()
 
-	print("Impact speed: ", impact_speed)
 
 	var damage: float = 0.0
 
@@ -138,7 +127,6 @@ func take_hit(
 
 		apply_central_impulse(force)
 
-	print("Block HP: ", current_health)
 
 	if current_health <= 0.0:
 		return true
@@ -162,12 +150,6 @@ func _apply_damage(amount: float) -> void:
 	)
 
 	update_sprite()
-
-	print(
-		name,
-		" HP: ",
-		current_health
-	)
 
 	if current_health <= 0.0:
 		destroy_block()

@@ -36,7 +36,6 @@ func take_hit(
 	if is_dead:
 		return
 
-	# Let die() handle is_dead
 	die()
 
 
@@ -49,18 +48,15 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 
-	# Disable collision
 	var collision := get_node_or_null("CollisionShape2D")
 	if collision:
 		collision.set_deferred("disabled", true)
 
-	# Disable detection area
 	var detection := get_node_or_null("DetectionArea")
 	if detection:
 		detection.set_deferred("monitoring", false)
 		detection.set_deferred("monitorable", false)
 
-	# Score
 	ScoreManager.add_score(score_value)
 	ScoreManager.enemy_killed()
 

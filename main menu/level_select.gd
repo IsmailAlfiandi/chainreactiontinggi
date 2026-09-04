@@ -9,15 +9,15 @@ func _ready():
 
 
 func _on_level_1_pressed():
-	get_tree().change_scene_to_file("res://resources/levels/lvl1.tscn")
+	get_tree().change_scene_to_file("res://resources/levels/demo_level.tscn")
 
 
 func _on_level_2_pressed():
-	get_tree().change_scene_to_file("res://resources/levels/lvl2.tscn")
+	print("Level 2 belum dibuat")
 
 
 func _on_level_3_pressed():
-	get_tree().change_scene_to_file("res://resources/levels/lvl3.tscn")
+	print("Coming Soon")
 
 
 func _on_back_pressed():

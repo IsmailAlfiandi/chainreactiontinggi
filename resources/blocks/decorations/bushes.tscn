@@ -10,6 +10,7 @@ collision_layer = 32768
 collision_mask = 32768
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=843058534]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_uy7uu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=243183552]

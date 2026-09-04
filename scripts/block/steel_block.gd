@@ -70,9 +70,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	var velocity: Vector2 = state.linear_velocity
 
-	# ---------------------------------------------------------
-	# Track the fastest downward speed while falling
-	# ---------------------------------------------------------
 	if velocity.y > 0.0:
 		was_airborne = true
 
@@ -81,30 +78,17 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			velocity.y
 		)
 
-	# ---------------------------------------------------------
-	# No collision yet
-	# ---------------------------------------------------------
 	if state.get_contact_count() == 0:
 		return
 
-	# ---------------------------------------------------------
-	# We have made contact.
-	# Use the maximum speed reached BEFORE the impact.
-	# ---------------------------------------------------------
 	if not was_airborne:
 		return
 
 	if max_fall_speed < fall_damage_min_speed:
-		# Reset because this was just a normal small collision
 		was_airborne = false
 		max_fall_speed = 0.0
 		return
 
-	print(
-		name,
-		" MAX FALL SPEED = ",
-		max_fall_speed
-	)
 
 	# Calculate damage
 	var fall_damage: float = (
@@ -117,9 +101,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		max_fall_damage
 	)
 
-	# ---------------------------------------------------------
-	# Check every object hit
-	# ---------------------------------------------------------
 	for i in state.get_contact_count():
 		var body: Node = state.get_contact_collider_object(i)
 
@@ -133,31 +114,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if body.is_in_group("arrow"):
 			continue
 
-		# -----------------------------------------------------
-		# ENEMY
-		# -----------------------------------------------------
 		if body is Ghost or body is Ghost2 or body is bat:
-			print(
-				name,
-				" CRUSHED ",
-				body.name,
-				" WITH ",
-				fall_damage,
-				" DAMAGE"
-			)
 
 			if body.has_method("die"):
 				body.die()
 
-			# Stop processing this fall
 			was_airborne = false
 			max_fall_speed = 0.0
 
 			break
 
-		# -----------------------------------------------------
-		# BLOCK
-		# -----------------------------------------------------
 		if body.has_method("take_explosion_damage"):
 			body.take_explosion_damage(fall_damage)
 
@@ -179,7 +145,6 @@ func take_hit(
 
 	var impact_speed: float = arrow_velocity.length()
 
-	print("Impact speed: ", impact_speed)
 
 	var damage: float = 0.0
 
@@ -204,8 +169,6 @@ func take_hit(
 
 		apply_central_impulse(force)
 
-	print("Block HP: ", current_health)
-
 	if current_health <= 0.0:
 		return true
 
@@ -228,12 +191,6 @@ func _apply_damage(amount: float) -> void:
 	)
 
 	update_sprite()
-
-	print(
-		name,
-		" HP: ",
-		current_health
-	)
 
 	if current_health <= 0.0:
 		destroy_block()
@@ -259,7 +216,6 @@ func destroy_block() -> void:
 	if not is_instance_valid(self):
 		return
 
-	# Release arrows stuck in this block
 	for arrow in get_tree().get_nodes_in_group("arrow"):
 		if not is_instance_valid(arrow):
 			continue

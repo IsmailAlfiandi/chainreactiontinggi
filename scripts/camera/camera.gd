@@ -74,7 +74,6 @@ func hold_at_explosion(pos: Vector2, duration: float = 1.4) -> void:
 
 func follow(new_target: Node2D) -> void:
 	if new_target and is_instance_valid(new_target):
-		# Don't override an intentional camera linger
 		if is_lingering:
 			return
 
@@ -82,8 +81,6 @@ func follow(new_target: Node2D) -> void:
 
 
 func delay_return_to_player(delay: float = 3.0) -> void:
-	# Restart the timer every time this is called.
-	# This is important when multiple arrows are fired quickly.
 	is_lingering = true
 	linger_timer = delay
 
