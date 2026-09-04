@@ -8,7 +8,7 @@ enum MaterialType { WOOD, STONE, STEEL, TNT }
 @export var push_speed: float = 300.0
 @export var destroy_speed: float = 700.0
 @export var explosion_force: float = 800.0
-@export var explosion_radius: float = 300.0
+@export var explosion_radius: float = 1000.0
 @export var push_force_multiplier: float = 1.0
 
 # === Health ===
