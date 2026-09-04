@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://mlu6exacbgda"]
+
+[ext_resource type="Script" uid="uid://bcjn6g5y2xcc1" path="res://scripts/block/glassblock.gd" id="1_36sln"]
+[ext_resource type="Texture2D" uid="uid://chjbbttk7y0kq" path="res://assets/tiles/structure/glass/1000418223.png" id="1_di4tg"]
+[ext_resource type="Texture2D" uid="uid://bslbvsco4sv6h" path="res://assets/tiles/structure/glass/glasslog.jpg" id="2_36sln"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_di4tg")
+}],
+"loop": 1,
+"name": &"criticalHealth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_36sln")
+}],
+"loop": 1,
+"name": &"fullHealth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nl21"]
+size = Vector2(100.25, 35)
+
+[node name="glasslog" type="RigidBody2D" unique_id=1608421375]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_36sln")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1409263106]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"criticalHealth"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2052500020]
+position = Vector2(-6.125, -30.5)
+shape = SubResource("RectangleShape2D_1nl21")

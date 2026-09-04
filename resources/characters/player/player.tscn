@@ -163,7 +163,7 @@ position = Vector2(52, 10)
 script = ExtResource("9_8yyh3")
 
 [node name="Line2D" type="Line2D" parent="AimProjection" unique_id=123444338]
-position = Vector2(0, 23)
+position = Vector2(21, -10)
 width = 4.0
 texture_mode = 1
 

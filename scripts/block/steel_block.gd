@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name SteelBlock
 
-enum MaterialType { WOOD, STONE, STEEL }
+enum MaterialType { WOOD, STONE, STEEL, GLASS, TNT }
 
 @export var material_type: MaterialType = MaterialType.STEEL
 @export var push_speed: float = 300.0
@@ -18,6 +18,13 @@ var current_health: float
 
 func _ready():
 	match material_type:
+		MaterialType.GLASS:
+			mass = 2.0
+			push_speed = 100.0
+			destroy_speed = 250.0
+			push_force_multiplier = 1.0
+			max_health = 50.0
+			damage_multiplier = 0.18
 		MaterialType.WOOD:
 			mass = 2.0
 			push_speed = 280.0
@@ -47,38 +54,39 @@ func _ready():
 	update_sprite()
 
 
-func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> void:
+func take_hit(arrow_velocity: Vector2, arrow: RigidBody2D) -> bool:
 	var impact_speed = arrow_velocity.length()
 	print("Impact speed: ", impact_speed)
 
-	# --- Improved damage calculation ---
-	var damage = 0.0
+	# Damage
+	var damage := 0.0
 
-	if impact_speed > 25.0:                          # ignore extremely weak taps
-		# Base damage + speed scaling
+	if impact_speed > 25.0:
 		damage = 8.0 + (impact_speed * damage_multiplier)
-		
-		# Optional: make very hard hits deal extra damage
+
 		if impact_speed > destroy_speed * 0.7:
 			damage *= 1.4
 
 	current_health -= damage
 	current_health = max(current_health, 0.0)
 
-	print("Damage taken: ", snapped(damage, 0.1), " | Health left: ", snapped(current_health, 0.1))
+	print("Block HP: ", current_health)
 
 	update_sprite()
 
-	# Push force (only if strong enough)
+	# Push force
 	if impact_speed >= push_speed:
-		var direction = arrow_velocity.normalized()
-		var force = direction * impact_speed * push_force_multiplier
+		var direction : Vector2 = arrow_velocity.normalized()
+		var force : Vector2 = direction * impact_speed * push_force_multiplier
 		apply_central_impulse(force)
 
-	# Arrow is already stopped by the arrow script, so no need to modify velocity here
-
+	# Block destroyed
 	if current_health <= 0:
 		destroy_block()
+		return true
+
+	# Block survived
+	return false
 
 func update_sprite() -> void:
 	if not anim:
@@ -95,9 +103,11 @@ func update_sprite() -> void:
 
 
 func destroy_block() -> void:
+	# Release arrows stuck in this block
 	for arrow in get_tree().get_nodes_in_group("arrow"):
-		if is_instance_valid(arrow) and arrow.get("stuck_to") == self:
-			arrow.queue_free()
-			
+		if is_instance_valid(arrow):
+			if arrow.get("stuck_to") == self:
+				arrow.release_from_target()
+
 	ScoreManager.add_score(10)
 	queue_free()

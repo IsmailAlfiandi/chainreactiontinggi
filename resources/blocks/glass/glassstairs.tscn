@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c5bqxpsokdkhp"]
+
+[ext_resource type="Texture2D" uid="uid://blfdxvqs8qwnh" path="res://assets/tiles/structure/glass/glassstairs.png" id="1_70ruf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_70ruf")
+}],
+"loop": 1,
+"name": &"criticalHealth",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fullHealth",
+"speed": 5.0
+}]
+
+[node name="glassStairs" type="RigidBody2D" unique_id=1616160414]
+collision_layer = 7
+collision_mask = 7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044062289]
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"criticalHealth"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1773567576]
+polygon = PackedVector2Array(1, -1, -50, -51, -50, 50, 52, 50)

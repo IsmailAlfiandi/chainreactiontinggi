@@ -17,7 +17,7 @@ var direction: Vector2 = Vector2.RIGHT
 
 func _ready():
 	change_state(State.WALK)
-
+	ScoreManager.register_enemy()
 
 func _physics_process(delta: float):
 	if not is_on_floor():

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ciy88xei1mb64"]
+
+[ext_resource type="Script" uid="uid://d0pa6ej35ng35" path="res://scripts/characters/enemy/bat/bat.gd" id="1_0pg22"]
+[ext_resource type="Texture2D" uid="uid://b60f7n4qfdylr" path="res://assets/character/enemy/bat/1000415378.png" id="1_4bryp"]
+[ext_resource type="Texture2D" uid="uid://7ivo7q6qllw2" path="res://assets/character/enemy/bat/1000415379.png" id="2_0pg22"]
+[ext_resource type="Texture2D" uid="uid://lu0cpxqys4fr" path="res://assets/character/enemy/bat/1000415380.png" id="3_1v004"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4bryp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0pg22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1v004")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0pg22")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nl21"]
+radius = 36.0
+height = 72.0
+
+[node name="bat" type="CharacterBody2D" unique_id=2039565118]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_0pg22")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1167140489]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kvkvn")
+animation = &"idle"
+frame = 3
+frame_progress = 0.42546046
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=532329072]
+position = Vector2(-6, 1)
+shape = SubResource("CapsuleShape2D_1nl21")

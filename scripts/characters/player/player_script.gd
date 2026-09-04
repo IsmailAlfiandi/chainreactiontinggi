@@ -180,17 +180,11 @@ func shoot():
 	var camera = get_tree().get_first_node_in_group("camera")
 	if camera:
 		camera.follow(arrow)
-		arrow.tree_exited.connect(func():
-			camera.follow(self)
-			if current_arrow == arrow:
-				current_arrow = null
-		)
-	
+
 	arrow.tree_exited.connect(func():
-		camera.follow(self)
 		if current_arrow == arrow:
 			current_arrow = null
-		after_hit()
+			after_hit()
 	)
 	
 	# Reset after shooting

@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c1h0btxgs26of" path="res://resources/characters/player/player.tscn" id="3_vvnjs"]
 [ext_resource type="PackedScene" uid="uid://c1xsf57846kaq" path="res://resources/characters/enemy/ghost/ghost.tscn" id="6_vjnnd"]
 [ext_resource type="PackedScene" uid="uid://d0or4ffes4ky1" path="res://resources/features/idle_point.tscn" id="7_0ag0w"]
-[ext_resource type="PackedScene" uid="uid://fjvnuyc85m73" path="res://resources/explosives/tnt.tscn" id="8_3gunp"]
+[ext_resource type="PackedScene" uid="uid://dh3quui24fy45" path="res://resources/blocks/stone/stoneBlock.tscn" id="8_3gunp"]
 [ext_resource type="PackedScene" uid="uid://clfft6n70voan" path="res://resources/blocks/steel/steelBlock.tscn" id="8_ld5m2"]
-[ext_resource type="PackedScene" uid="uid://b4ue5wr2luyo5" path="res://resources/blocks/stone/stone_stairs.tscn" id="10_x1oef"]
 
 [node name="Node2D" type="Node2D" unique_id=1690568784]
 script = ExtResource("1_3gunp")
@@ -35,12 +34,8 @@ position = Vector2(1822, 375)
 [node name="idle_point2" parent="." unique_id=235442717 instance=ExtResource("7_0ag0w")]
 position = Vector2(2537, 362)
 
-[node name="TNT" parent="." unique_id=1260058245 instance=ExtResource("8_3gunp")]
-position = Vector2(1379, 395)
-
-[node name="stoneStairs" parent="." unique_id=1148623654 instance=ExtResource("10_x1oef")]
-position = Vector2(1260, 394)
-rotation = 4.712389
-
 [node name="steelBlock" parent="." unique_id=1160310445 instance=ExtResource("8_ld5m2")]
 position = Vector2(922, 393)
+
+[node name="stoneBlock" parent="." unique_id=1584937468 instance=ExtResource("8_3gunp")]
+position = Vector2(923, 285)

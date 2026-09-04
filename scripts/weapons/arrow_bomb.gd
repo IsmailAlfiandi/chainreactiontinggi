@@ -82,13 +82,13 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("arrow"):
 		return
 
-	if body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
+	if body is GlassBlock or body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
 		_stick_to_body(body)
 		body.take_hit(last_velocity, self)
 		_notify_player()
 		return
 
-	if body is Ghost:
+	if body is Ghost or body is Ghost2 or body is bat:
 		body.take_hit(last_velocity, self)
 		_freeze_arrow()
 		_notify_player()
@@ -200,7 +200,7 @@ func _affect_body(body: Node) -> void:
 		return
 
 	# ---------- BLOCKS ----------
-	if body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
+	if body is GlassBlock or body is WoodBlock or body is StoneBlock or body is SteelBlock or body is TNTBlock:
 		var damage = explosion_damage * falloff
 
 		if body.has_method("take_explosion_damage"):
@@ -220,7 +220,7 @@ func _affect_body(body: Node) -> void:
 			body.apply_central_impulse(direction * explosion_force * falloff)
 
 	# ---------- ENEMIES ----------
-	elif body is Ghost:
+	elif body is Ghost or body is Ghost2 or body is bat:
 		var damage = explosion_damage * falloff
 
 		if body.has_method("take_explosion_damage"):

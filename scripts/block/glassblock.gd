@@ -1,9 +1,9 @@
 extends RigidBody2D
-class_name StoneBlock
+class_name GlassBlock
 
 enum MaterialType { WOOD, STONE, STEEL, GLASS, TNT }
 
-@export var material_type: MaterialType = MaterialType.STONE
+@export var material_type: MaterialType = MaterialType.GLASS
 @export var push_speed: float = 300.0
 @export var destroy_speed: float = 700.0
 @export var push_force_multiplier: float = 1.0
